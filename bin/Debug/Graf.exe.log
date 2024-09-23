@@ -1,0 +1,156 @@
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13628, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004F42FC (32-bit), Flags: CMdRe0, Thread: 0xDB8 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00416F73 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: txBitBlt() at c:/codeblocks/mingw/include/txlib.h (13628)
+
+# 1 0x0041D695 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (74):
+
+     72: 
+     73: 
+=>   74:         txBitBlt(txDC(), 600, 300, 348, 313, vaza1);
+     75: 
+     76:         txEnd();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Sep 20 2024 18:25:20, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Sep 20 2024 18:25:27
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13628, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004F42FC (32-bit), Flags: CMdRe0, Thread: 0x24C8 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00416F73 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: txBitBlt() at c:/codeblocks/mingw/include/txlib.h (13628)
+
+# 1 0x0041D695 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (74):
+
+     72: 
+     73: 
+=>   74:         txBitBlt(txDC(), 600, 300, 378, 313, vaza1);
+     75: 
+     76:         txEnd();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Sep 20 2024 18:25:52, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Sep 20 2024 18:25:57
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13628, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004F42FC (32-bit), Flags: CMdRe0, Thread: 0x3640 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00416F73 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: txBitBlt() at c:/codeblocks/mingw/include/txlib.h (13628)
+
+# 1 0x0041D695 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (74):
+
+     72: 
+     73: 
+=>   74:         txBitBlt(txDC(), 600, 300, 378, 313, vaza1);
+     75: 
+     76:         txEnd();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Sep 20 2024 18:26:33, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Sep 20 2024 18:26:37
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {0, 0, 378, 313} не полностью лежит внутри изображения-источника {0, 0, 200, 165}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004F42FC (32-bit), Flags: CMdRe0, Thread: 0x5DC (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00417523 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: txTransparentBlt() at c:/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0041D695 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (74):
+
+     72: 
+     73: 
+=>   74:         txTransparentBlt(txDC(), 600, 300, 378, 313, vaza1, 0, 0, TX_WHITE);
+     75: 
+     76:         txEnd();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Sep 20 2024 18:30:29, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Sep 20 2024 18:30:33
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
