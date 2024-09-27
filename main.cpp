@@ -30,6 +30,29 @@ struct Button
 
 };
 
+struct Picture
+{
+    int x;
+    int y;
+    HDC name;
+    int w_scr;
+    int h_scr;
+    int w;
+    int h;
+    bool visible;
+
+    void draw()
+    {
+        if(visible)
+        {
+            Win32::TransparentBlt (txDC(), x, y, w_scr, h_scr, name, 0, 0, w, h, TX_WHITE);
+        }
+    }
+
+
+};
+
+
 void drawWorkSpace()
 {
     txSetColor (TX_WHITE);
@@ -42,23 +65,20 @@ int main()
 txCreateWindow (1300, 700);
 txTextCursor (false);
 
-    Button btn1 = {100, 10, 150, 40, "Вазы"};
-    Button btn2 = {300, 10, 150, 40, "Фрукты"};
-    Button btn3 = {500, 10, 150, 40, "Овощи"};
-    Button btn4 = {700, 10, 150, 40, "Ягоды"};
+    Button btn[5];
+    btn[0] = {100, 10, 150, 40, "Вазы"};
+    btn[1] = {300, 10, 150, 40, "Фрукты"};
+    btn[2] = {500, 10, 150, 40, "Овощи"};
+    btn[3] = {700, 10, 150, 40, "Ягоды"};
+    btn[4] = {900, 10, 150, 40, "Грибы"};
 
-    HDC vaza1 = txLoadImage("Pictures/Ваза/Ваза1.bmp");
-    HDC vaza2 = txLoadImage("Pictures/Ваза/Ваза2.bmp");
-
-    HDC frukt1 = txLoadImage("Pictures/Фрукты/Апельсин.bmp");
-    HDC frukt2 = txLoadImage("Pictures/Фрукты/Лимон.bmp");
-
-    HDC ovosch1 = txLoadImage("Pictures/Овощи/Огурец.bmp");
-    HDC ovosch2 = txLoadImage("Pictures/Овощи/Помидор.bmp");
-
-    bool visibleVaza = false;
-    bool visibleFrukt = false;
-    bool visibleOvosch = false;
+    Picture pic[6];
+    pic[0] = {10, 100, txLoadImage("Pictures/Ваза/Ваза1.bmp"), 80, 80, 400, 400, false};
+    pic[1] = {10, 200, txLoadImage("Pictures/Ваза/Ваза2.bmp"), 80, 80, 400, 400, false};
+    pic[2] = {10, 100, txLoadImage("Pictures/Фрукты/Апельсин.bmp"), 50, 50, 100, 100, false};
+    pic[3] = {10, 200, txLoadImage("Pictures/Фрукты/Лимон.bmp"), 50, 50, 100, 100, false};
+    pic[4] = {10, 100, txLoadImage("Pictures/Овощи/Огурец.bmp"), 50, 50, 100, 100, false};
+    pic[5] = {10, 200, txLoadImage("Pictures/Овощи/Помидор.bmp"), 50, 50, 100, 100, false};
 
 
     while(!GetAsyncKeyState (VK_ESCAPE))
@@ -70,51 +90,47 @@ txTextCursor (false);
 
         drawWorkSpace();
 
-        btn1.draw();
-        btn2.draw();
-        btn3.draw();
-        btn4.draw();
-
-        if(visibleVaza)
+        for(int i=0; i<5; i++)
         {
-            Win32::TransparentBlt (txDC(), 10, 100, 80, 80, vaza1, 0, 0, 400, 400, TX_WHITE);
-            Win32::TransparentBlt (txDC(), 10, 200, 80, 80, vaza2, 0, 0, 400, 400, TX_WHITE);
+            btn[i].draw();
         }
 
-        if(visibleFrukt)
+        for(int i=0; i<6; i++)
         {
-            Win32::TransparentBlt (txDC(), 10, 100, 50, 50, frukt1, 0, 0, 100, 100, TX_WHITE);
-            Win32::TransparentBlt (txDC(), 10, 200, 50, 50, frukt2, 0, 0, 100, 100, TX_WHITE);
-        }
-
-        if(visibleOvosch)
-        {
-            Win32::TransparentBlt (txDC(), 10, 100, 50, 50, ovosch1, 0, 0, 100, 100, TX_WHITE);
-            Win32::TransparentBlt (txDC(), 10, 200, 50, 50, ovosch2, 0, 0, 100, 100, TX_WHITE);
+            pic[i].draw();
         }
 
 
-        if(btn1.click())
+
+        if(btn[0].click())
         {
-            visibleVaza = true;
-            visibleFrukt = false;
-            visibleOvosch = false;
+            pic[0].visible = true;
+            pic[1].visible = true;
+            pic[2].visible = false;
+            pic[3].visible = false;
+            pic[4].visible = false;
+            pic[5].visible = false;
         }
 
-        if(btn2.click())
+        if(btn[1].click())
         {
-            visibleFrukt = true;
-            visibleVaza = false;
-            visibleOvosch = false;
+            pic[0].visible = false;
+            pic[1].visible = false;
+            pic[2].visible = true;
+            pic[3].visible = true;
+            pic[4].visible = false;
+            pic[5].visible = false;
         }
 
-        if(btn3.click())
+        if(btn[2].click())
         {
-            visibleFrukt = false;
-            visibleVaza = false;
-            visibleOvosch = true;
+            pic[0].visible = false;
+            pic[1].visible = false;
+            pic[2].visible = false;
+            pic[3].visible = false;
+            pic[4].visible = true;
+            pic[5].visible = true;
         }
-
 
 
 
@@ -124,11 +140,10 @@ txTextCursor (false);
 
     }
 
-    txDeleteDC(vaza1);
-    txDeleteDC(vaza2);
-
-    txDeleteDC(frukt1);
-
+    for(int i=0; i<6; i++)
+    {
+        txDeleteDC(pic[i].name);
+    }
 
 txDisableAutoPause();
 return 0;
