@@ -7,13 +7,14 @@ struct Button
    int w;
    int h;
    const char* text;
+   string category;
 
    void draw()
    {
-        txSetColor (TX_WHITE);
+        txSetColor (TX_BLACK);
         txSetFillColor (TX_GREY);
         Win32::RoundRect (txDC(), x+3, y+3, x+w+3, y+h+3, 60, 60);
-        txSetColor (TX_WHITE);
+        txSetColor (TX_BLACK);
         txSetFillColor (TX_YELLOW);
         Win32::RoundRect (txDC(), x, y, x+w, y+h, 60, 60);
         txSetColor (TX_BLACK);
@@ -40,6 +41,7 @@ struct Picture
     int w;
     int h;
     bool visible;
+    string category;
 
     void draw()
     {
@@ -49,13 +51,16 @@ struct Picture
         }
     }
 
-
+    bool click()
+    {
+        return(   txMouseButtons() == 1 && txMouseX()>x &&  txMouseX()<x+w_scr &&
+                 txMouseY()>y && txMouseY()<y+h_scr);
+    }
 };
-
 
 void drawWorkSpace()
 {
-    txSetColor (TX_WHITE);
+    txSetColor (TX_BLACK);
     txSetFillColor (TX_YELLOW);
     txRectangle (300, 100, 1290, 690);
 }
@@ -65,84 +70,100 @@ int main()
 txCreateWindow (1300, 700);
 txTextCursor (false);
 
-    Button btn[5];
-    btn[0] = {100, 10, 150, 40, "Вазы"};
-    btn[1] = {300, 10, 150, 40, "Фрукты"};
-    btn[2] = {500, 10, 150, 40, "Овощи"};
-    btn[3] = {700, 10, 150, 40, "Ягоды"};
-    btn[4] = {900, 10, 150, 40, "Грибы"};
+    //количество кнопок
+    int count_btn = 6;
+    //количество картинок меню
+    int count_pic = 9;
+    //создание массива кнопок
+    Button btn[count_btn];
+    btn[0] = {100, 10, 150, 30, "Вазы", "Вазы"};
+    btn[1] = {270, 10, 150, 30, "Фрукты", "Фрукты"};
+    btn[2] = {440, 10, 150, 30, "Овощи", "Овощи"};
+    btn[3] = {610, 10, 150, 30, "Ягоды", "Ягоды"};
+    btn[4] = {780, 10, 150, 30, "Грибы", "Грибы"};
+    btn[5] = {950, 10, 150, 30, "Цветы", "Цветы"};
+    //создание массива картинок меню
+    Picture menu_pic[count_pic];
+    menu_pic[0] = {10, 100, txLoadImage("Pictures/Ваза/Ваза1.bmp"), 80, 80, 400, 400, false, "Вазы"};
+    menu_pic[1] = {10, 200, txLoadImage("Pictures/Ваза/Ваза2.bmp"), 80, 80, 400, 400, false, "Вазы"};
+    menu_pic[2] = {10, 100, txLoadImage("Pictures/Фрукты/Апельсин.bmp"), 50, 50, 100, 100, false, "Фрукты"};
+    menu_pic[3] = {10, 200, txLoadImage("Pictures/Фрукты/Лимон.bmp"), 50, 50, 100, 100, false, "Фрукты"};
+    menu_pic[4] = {10, 100, txLoadImage("Pictures/Овощи/Огурец.bmp"), 50, 50, 100, 100, false, "Овощи"};
+    menu_pic[5] = {10, 200, txLoadImage("Pictures/Овощи/Помидор.bmp"), 50, 50, 100, 100, false, "Овощи"};
+    menu_pic[6] = {10, 100, txLoadImage("Pictures/Ягоды/Клубника.bmp"), 50, 50, 100, 100, false, "Ягоды"};
+    menu_pic[7] = {10, 200, txLoadImage("Pictures/Ягоды/Малина.bmp"), 50, 50, 100, 100, false, "Ягоды"};
+    menu_pic[8] = {10, 300, txLoadImage("Pictures/Ягоды/Черника.bmp"), 50, 50, 100, 100, false, "Ягоды"};
 
-    Picture pic[6];
-    pic[0] = {10, 100, txLoadImage("Pictures/Ваза/Ваза1.bmp"), 80, 80, 400, 400, false};
-    pic[1] = {10, 200, txLoadImage("Pictures/Ваза/Ваза2.bmp"), 80, 80, 400, 400, false};
-    pic[2] = {10, 100, txLoadImage("Pictures/Фрукты/Апельсин.bmp"), 50, 50, 100, 100, false};
-    pic[3] = {10, 200, txLoadImage("Pictures/Фрукты/Лимон.bmp"), 50, 50, 100, 100, false};
-    pic[4] = {10, 100, txLoadImage("Pictures/Овощи/Огурец.bmp"), 50, 50, 100, 100, false};
-    pic[5] = {10, 200, txLoadImage("Pictures/Овощи/Помидор.bmp"), 50, 50, 100, 100, false};
-
+    //создание массива картинок на рабочей области
+    Picture centr_pic[count_pic];
+    centr_pic[0] = {350, 150, txLoadImage("Pictures/Ваза/Ваза1.bmp"), 400, 400, 400, 400, false, "Вазы"};
 
     while(!GetAsyncKeyState (VK_ESCAPE))
     {
-        txSetFillColor (TX_BLACK);
+        txSetFillColor (TX_WHITE);
         txClear();
 
         txBegin();
-
+        //рабочая область
         drawWorkSpace();
-
-        for(int i=0; i<5; i++)
+        //рисование кнопок
+        for(int i=0; i<count_btn; i++)
         {
             btn[i].draw();
         }
-
-        for(int i=0; i<6; i++)
+        //рисование картинок меню
+        for(int i=0; i<count_pic; i++)
         {
-            pic[i].draw();
+            menu_pic[i].draw();
+        }
+        //рисование картинок в центре
+        for(int i=0; i<count_pic; i++)
+        {
+            centr_pic[i].draw();
+        }
+        //условие видимости картинок меню в зависимости от нажатой кнопки
+        for(int nbutton=0; nbutton<count_btn; nbutton++)
+        {
+            if(btn[nbutton].click())
+            {
+                for(int npic=0; npic<count_pic; npic++)
+                {
+                    menu_pic[npic].visible = false;
+                    if(menu_pic[npic].category == btn[nbutton].category)
+                    {
+                        menu_pic[npic].visible = true;
+                    }
+                }
+
+            }
         }
 
 
-
-        if(btn[0].click())
+        //условие видимости картинок в центре в зависимости от нажатой картинки меню
+        for(int npic_menu=0; npic_menu<count_pic; npic_menu++)
         {
-            pic[0].visible = true;
-            pic[1].visible = true;
-            pic[2].visible = false;
-            pic[3].visible = false;
-            pic[4].visible = false;
-            pic[5].visible = false;
+            if(menu_pic[npic_menu].click())
+            {
+                for(int npic_centr=0; npic_centr<count_pic; npic_centr++)
+                {
+                    //centr_pic[npic_centr].visible = false;
+                    if(centr_pic[npic_centr].category==menu_pic[npic_menu].category)
+                    {
+                        centr_pic[npic_centr].visible = true;
+                    }
+                }
+
+            }
         }
-
-        if(btn[1].click())
-        {
-            pic[0].visible = false;
-            pic[1].visible = false;
-            pic[2].visible = true;
-            pic[3].visible = true;
-            pic[4].visible = false;
-            pic[5].visible = false;
-        }
-
-        if(btn[2].click())
-        {
-            pic[0].visible = false;
-            pic[1].visible = false;
-            pic[2].visible = false;
-            pic[3].visible = false;
-            pic[4].visible = true;
-            pic[5].visible = true;
-        }
-
-
-
 
         txEnd();
         txSleep(10);
 
     }
 
-    for(int i=0; i<6; i++)
+    for(int i=0; i<count_pic; i++)
     {
-        txDeleteDC(pic[i].name);
+        txDeleteDC(menu_pic[i].name);
     }
 
 txDisableAutoPause();

@@ -4,23 +4,52 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
 <tt>
-Build started on: <u>27-09-2024 at 18:24.28</u><br />
-Build ended on: <u>27-09-2024 at 18:24.33</u><p />
+Build started on: <u>04-10-2024 at 18:28.22</u><br />
+Build ended on: <u>04-10-2024 at 18:28.27</u><p />
 <b>-------------- Build: Debug in Graf (compiler: GNU GCC Compiler)---------------</b><br />
 g++.bat -Wall -fexceptions  -g     -c C:\Users\root\source\repos\Graf\main.cpp -o obj\Debug\main.o<br />
 ------------------------------------------------------------------------------------------------------<br />
 Compilation ERRORS:<br />
 <br />
 C:\Users\root\source\repos\Graf\main.cpp: In function 'void drawWorkSpace()':<br />
-<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:56:6: warning: no previous declaration for 'void drawWorkSpace()' [-Wmissing-declarations]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:61:6: warning: no previous declaration for 'void drawWorkSpace()' [-Wmissing-declarations]</font><br />
  void drawWorkSpace()<br />
       ^<br />
+C:\Users\root\source\repos\Graf\main.cpp: In constructor 'Button::Button()':<br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:3:8: warning: 'Button::x' should be initialized in the member initialization list [-Weffc++]</font><br />
+ struct Button<br />
+        ^<br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:3:8: warning: 'Button::y' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:3:8: warning: 'Button::w' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:3:8: warning: 'Button::h' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:3:8: warning: 'Button::text' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:3:8: warning: 'Button::category' should be initialized in the member initialization list [-Weffc++]</font><br />
+C:\Users\root\source\repos\Graf\main.cpp: In function 'int main()':<br />
+C:\Users\root\source\repos\Graf\main.cpp:78:25: note: synthesized method 'Button::Button()' first required here <br />
+     Button btn[count_btn];<br />
+                         ^<br />
+C:\Users\root\source\repos\Graf\main.cpp: In constructor 'Picture::Picture()':<br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:34:8: warning: 'Picture::x' should be initialized in the member initialization list [-Weffc++]</font><br />
+ struct Picture<br />
+        ^<br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:34:8: warning: 'Picture::y' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:34:8: warning: 'Picture::name' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:34:8: warning: 'Picture::w_scr' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:34:8: warning: 'Picture::h_scr' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:34:8: warning: 'Picture::w' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:34:8: warning: 'Picture::h' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:34:8: warning: 'Picture::visible' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:34:8: warning: 'Picture::category' should be initialized in the member initialization list [-Weffc++]</font><br />
+C:\Users\root\source\repos\Graf\main.cpp: In function 'int main()':<br />
+C:\Users\root\source\repos\Graf\main.cpp:86:31: note: synthesized method 'Picture::Picture()' first required here <br />
+     Picture menu_pic[count_pic];<br />
+                               ^<br />
 ------------------------------------------------------------------------------------------------------<br />
 Autosaving to the Git repository in C:/Users/root/source/repos/Graf/.git-auto/... <br />
 g++.exe  -o bin\Debug\Graf.exe obj\Debug\main.o     -mwindows<br />
-Output size is 2,17 MB<br />
+Output size is 2,19 MB<br />
 <font color="#0000ff">Process terminated with status 0 (0 minutes, 4 seconds)</font><br />
-<font color="#0000ff">0 errors, 1 warnings (0 minutes, 4 seconds)</font><br />
+<font color="#0000ff">0 errors, 16 warnings (0 minutes, 4 seconds)</font><br />
 </tt>
 </body>
 </html>
