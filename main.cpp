@@ -74,6 +74,12 @@ txTextCursor (false);
     int count_btn = 6;
     //количество картинок меню
     int count_pic = 9;
+    //количествл ценнтральных картинок в рабочей области
+    int nCentralPic = 0;
+
+    char str[20];
+    int vybor = -1;
+
     //создание массива кнопок
     Button btn[count_btn];
     btn[0] = {100, 10, 150, 30, "Вазы", "Вазы"};
@@ -82,6 +88,7 @@ txTextCursor (false);
     btn[3] = {610, 10, 150, 30, "Ягоды", "Ягоды"};
     btn[4] = {780, 10, 150, 30, "Грибы", "Грибы"};
     btn[5] = {950, 10, 150, 30, "Цветы", "Цветы"};
+
     //создание массива картинок меню
     Picture menu_pic[count_pic];
     menu_pic[0] = {10, 100, txLoadImage("Pictures/Ваза/Ваза1.bmp"), 80, 80, 400, 400, false, "Вазы"};
@@ -94,9 +101,23 @@ txTextCursor (false);
     menu_pic[7] = {10, 200, txLoadImage("Pictures/Ягоды/Малина.bmp"), 50, 50, 100, 100, false, "Ягоды"};
     menu_pic[8] = {10, 300, txLoadImage("Pictures/Ягоды/Черника.bmp"), 50, 50, 100, 100, false, "Ягоды"};
 
-    //создание массива картинок на рабочей области
+    //создание массива картинок на рабочей области для проекта с заменой центральных картиной в рабочей области
+    /*
     Picture centr_pic[count_pic];
     centr_pic[0] = {350, 150, txLoadImage("Pictures/Ваза/Ваза1.bmp"), 400, 400, 400, 400, false, "Вазы"};
+    centr_pic[1] = {350, 150, txLoadImage("Pictures/Ваза/Ваза2.bmp"), 400, 400, 400, 400, false, "Вазы"};
+    centr_pic[2] = {350, 150, txLoadImage("Pictures/Фрукты/Апельсин.bmp"), 100, 100, 100, 100, false, "Фрукты"};
+    centr_pic[3] = {350, 150, txLoadImage("Pictures/Фрукты/Лимон.bmp"), 100, 100, 100, 100, false, "Фрукты"};
+    centr_pic[4] = {350, 150, txLoadImage("Pictures/Овощи/Огурец.bmp"), 100, 100, 100, 100, false, "Овощи"};
+    centr_pic[5] = {350, 150, txLoadImage("Pictures/Овощи/Помидор.bmp"), 100, 100, 100, 100, false, "Овощи"};
+    centr_pic[6] = {350, 150, txLoadImage("Pictures/Ягоды/Клубника.bmp"), 100, 100, 100, 100, false, "Ягоды"};
+    centr_pic[7] = {350, 150, txLoadImage("Pictures/Ягоды/Малина.bmp"), 100, 100, 100, 100, false, "Ягоды"};
+    centr_pic[8] = {350, 150, txLoadImage("Pictures/Ягоды/Черника.bmp"), 100, 100, 100, 100, false, "Ягоды"};
+    */
+
+    //создание массива картинок на рабочей области для проекта без замены центральных картиной в рабочей области
+    Picture centr_pic[100];
+
 
     while(!GetAsyncKeyState (VK_ESCAPE))
     {
@@ -140,19 +161,69 @@ txTextCursor (false);
 
 
         //условие видимости картинок в центре в зависимости от нажатой картинки меню
-        for(int npic_menu=0; npic_menu<count_pic; npic_menu++)
+
+        //Для замены центральный картинок на рабочей области
+/*
+        for(int npic=0; npic<count_pic; npic++)
         {
-            if(menu_pic[npic_menu].click())
+            if(menu_pic[npic].click() && menu_pic[npic].visible)
             {
-                for(int npic_centr=0; npic_centr<count_pic; npic_centr++)
+                for(int npic1=0; npic1<count_pic; npic1++)
                 {
-                    //centr_pic[npic_centr].visible = false;
-                    if(centr_pic[npic_centr].category==menu_pic[npic_menu].category)
+                    if(centr_pic[npic1].category==centr_pic[npic].category)
                     {
-                        centr_pic[npic_centr].visible = true;
+                        centr_pic[npic1].visible = false;
                     }
                 }
+                centr_pic[npic].visible = !centr_pic[npic].visible;
+            }
+        }
+ */
 
+        //Без замены центральный картинок на рабочей области
+        for(int npic=0; npic<count_pic; npic++)
+        {
+            if(menu_pic[npic].click() && menu_pic[npic].visible)
+            {
+                while(txMouseButtons() == 1)
+                {
+                    txSleep(10);
+                }
+
+                centr_pic[nCentralPic] =    {   350,
+                                                150,
+                                                menu_pic[npic].name,
+                                                menu_pic[npic].w,
+                                                menu_pic[npic].h,
+                                                menu_pic[npic].w,
+                                                menu_pic[npic].h,
+                                                menu_pic[npic].visible,
+                                                menu_pic[npic].category
+                                            };
+
+              nCentralPic ++;
+            }
+        }
+
+        for(int npic=0; npic<nCentralPic; npic++)
+        {
+            if(centr_pic[npic].click() && centr_pic[npic].visible)
+            {
+                vybor = npic;
+            }
+        }
+
+        sprintf(str, "Кол.цент.картинок = %d", nCentralPic);
+        txTextOut(10, 600, str);
+        sprintf(str, "Выбор = %d", vybor);
+        txTextOut(10, 650, str);
+
+        if(vybor>=0)
+        {
+            if(txMouseButtons() == 1)
+            {
+               centr_pic[vybor].x = txMouseX();
+               centr_pic[vybor].y = txMouseY();
             }
         }
 
