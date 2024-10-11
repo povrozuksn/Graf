@@ -78,6 +78,9 @@ txTextCursor (false);
     int nCentralPic = 0;
 
     char str[20];
+    int vybor = -1;
+
+    bool mouse_down = false;
 
     //создание массива кнопок
     Button btn[count_btn];
@@ -137,7 +140,7 @@ txTextCursor (false);
             menu_pic[i].draw();
         }
         //рисование картинок в центре
-        for(int i=0; i<count_pic; i++)
+        for(int i=0; i<nCentralPic; i++)
         {
             centr_pic[i].draw();
         }
@@ -203,12 +206,88 @@ txTextCursor (false);
               nCentralPic ++;
             }
         }
-        
-        
 
+        //Выбор объекта в рабочей области
+        for(int npic=0; npic<nCentralPic; npic++)
+        {
+            if(centr_pic[npic].click() && centr_pic[npic].visible)
+            {
+                vybor = npic;
+                mouse_down = false;
+            }
+        }
+        /*
         sprintf(str, "Кол.цент.картинок = %d", nCentralPic);
-        txTextOut(0, 600, str);
+        txTextOut(10, 600, str);
+        sprintf(str, "Выбор = %d", vybor);
+        txTextOut(10, 650, str);
+        */
+        //Передвижение объекта мышкой
+        if(vybor>=0)
+        {
+            if(txMouseButtons() == 1 && !mouse_down)
+            {
+               centr_pic[vybor].x = txMouseX() - centr_pic[vybor].w_scr/2;
+               centr_pic[vybor].y = txMouseY() - centr_pic[vybor].h_scr/2;
+            }
+            else
+            {
+                if(txMouseButtons() != 1)
+                {
+                    mouse_down = true;
+                }
+            }
+        }
 
+        //Перемещение объекта клавиатурой
+        if(vybor>=0)
+        {
+             if(GetAsyncKeyState (VK_UP))
+             {
+                centr_pic[vybor].y -= 5;
+             }
+             if(GetAsyncKeyState (VK_DOWN))
+             {
+                centr_pic[vybor].y += 5;
+             }
+             if(GetAsyncKeyState (VK_RIGHT))
+             {
+                centr_pic[vybor].x += 5;
+             }
+             if(GetAsyncKeyState (VK_LEFT))
+             {
+                centr_pic[vybor].x -= 5;
+             }
+             if(GetAsyncKeyState (VK_OEM_PLUS))
+             {
+                centr_pic[vybor].w_scr = centr_pic[vybor].w_scr*1.05;
+                centr_pic[vybor].h_scr = centr_pic[vybor].h_scr*1.05;
+                if(centr_pic[vybor].w_scr>600)
+                {
+                    centr_pic[vybor].w_scr=600;
+                    centr_pic[vybor].h_scr=600;
+                }
+             }
+             if(GetAsyncKeyState (VK_OEM_MINUS))
+             {
+                centr_pic[vybor].w_scr = centr_pic[vybor].w_scr*0.95;
+                centr_pic[vybor].h_scr = centr_pic[vybor].h_scr*0.95;
+                if(centr_pic[vybor].w_scr<50)
+                {
+                    centr_pic[vybor].w_scr=50;
+                    centr_pic[vybor].h_scr=50;
+                }
+             }
+        }
+
+        //Удаление объекта
+        if(vybor>=0 && GetAsyncKeyState (VK_DELETE))
+        {
+            centr_pic[vybor] = centr_pic[nCentralPic-1];
+            nCentralPic--;
+            vybor = -1;
+            mouse_down = true;
+        }
 
         txEnd();
         txSleep(10);
@@ -218,6 +297,10 @@ txTextCursor (false);
     for(int i=0; i<count_pic; i++)
     {
         txDeleteDC(menu_pic[i].name);
+    }
+    for(int i=0; i<nCentralPic; i++)
+    {
+        txDeleteDC(centr_pic[i].name);
     }
 
 txDisableAutoPause();
