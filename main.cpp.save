@@ -1,4 +1,7 @@
 #include "TXLib.h"
+#include <fstream>
+
+using namespace std;
 
 struct Button
 {
@@ -7,6 +10,7 @@ struct Button
    int w;
    int h;
    const char* text;
+   COLORREF color;
    string category;
 
    void draw()
@@ -15,10 +19,10 @@ struct Button
         txSetFillColor (TX_GREY);
         Win32::RoundRect (txDC(), x+3, y+3, x+w+3, y+h+3, 60, 60);
         txSetColor (TX_BLACK);
-        txSetFillColor (TX_YELLOW);
+        txSetFillColor (color);
         Win32::RoundRect (txDC(), x, y, x+w, y+h, 60, 60);
         txSetColor (TX_BLACK);
-        txSelectFont("Comic Sans MS", 30);
+        txSelectFont("Comic Sans MS", 25);
         txDrawText(x, y, x+w, y+h, text);
    }
 
@@ -35,7 +39,8 @@ struct Picture
 {
     int x;
     int y;
-    HDC name;
+    string adress;
+    HDC image;
     int w_scr;
     int h_scr;
     int w;
@@ -47,7 +52,7 @@ struct Picture
     {
         if(visible)
         {
-            Win32::TransparentBlt (txDC(), x, y, w_scr, h_scr, name, 0, 0, w, h, TX_WHITE);
+            Win32::TransparentBlt (txDC(), x, y, w_scr, h_scr, image, 0, 0, w, h, TX_WHITE);
         }
     }
 
@@ -71,10 +76,14 @@ txCreateWindow (1300, 700);
 txTextCursor (false);
 
     //количество кнопок
-    int count_btn = 6;
+    int count_btn = 9;
+    //кнопка сохранения
+    int btn_save = count_btn-2;
+    //кнопка загрузки
+    int btn_load = count_btn-1;
     //количество картинок меню
-    int count_pic = 9;
-    //количествл ценнтральных картинок в рабочей области
+    int count_pic = 16;
+    //количествл центральных картинок в рабочей области
     int nCentralPic = 0;
 
     char str[20];
@@ -84,24 +93,34 @@ txTextCursor (false);
 
     //создание массива кнопок
     Button btn[count_btn];
-    btn[0] = {100, 10, 150, 30, "Вазы", "Вазы"};
-    btn[1] = {270, 10, 150, 30, "Фрукты", "Фрукты"};
-    btn[2] = {440, 10, 150, 30, "Овощи", "Овощи"};
-    btn[3] = {610, 10, 150, 30, "Ягоды", "Ягоды"};
-    btn[4] = {780, 10, 150, 30, "Грибы", "Грибы"};
-    btn[5] = {950, 10, 150, 30, "Цветы", "Цветы"};
+    btn[0] = {100, 10, 150, 30, "Фруктовницы", TX_YELLOW, "Фруктовницы"};
+    btn[1] = {270, 10, 150, 30, "Фрукты", TX_YELLOW, "Фрукты"};
+    btn[2] = {440, 10, 150, 30, "Овощи", TX_YELLOW, "Овощи"};
+    btn[3] = {610, 10, 150, 30, "Ягоды", TX_YELLOW, "Ягоды"};
+    btn[4] = {780, 10, 150, 30, "Грибы", TX_YELLOW, "Грибы"};
+    btn[5] = {950, 10, 150, 30, "Цветы", TX_YELLOW, "Цветы"};
+    btn[6] = {1120, 10, 150, 30, "Вазы", TX_YELLOW, "Вазы"};
+    btn[7] = {300, 55, 150, 30, "Сохранить", TX_LIGHTGREEN, ""};
+    btn[8] = {470, 55, 150, 30, "Загрузить", TX_LIGHTGREEN, ""};
 
     //создание массива картинок меню
     Picture menu_pic[count_pic];
-    menu_pic[0] = {10, 100, txLoadImage("Pictures/Ваза/Ваза1.bmp"), 80, 80, 400, 400, false, "Вазы"};
-    menu_pic[1] = {10, 200, txLoadImage("Pictures/Ваза/Ваза2.bmp"), 80, 80, 400, 400, false, "Вазы"};
-    menu_pic[2] = {10, 100, txLoadImage("Pictures/Фрукты/Апельсин.bmp"), 50, 50, 100, 100, false, "Фрукты"};
-    menu_pic[3] = {10, 200, txLoadImage("Pictures/Фрукты/Лимон.bmp"), 50, 50, 100, 100, false, "Фрукты"};
-    menu_pic[4] = {10, 100, txLoadImage("Pictures/Овощи/Огурец.bmp"), 50, 50, 100, 100, false, "Овощи"};
-    menu_pic[5] = {10, 200, txLoadImage("Pictures/Овощи/Помидор.bmp"), 50, 50, 100, 100, false, "Овощи"};
-    menu_pic[6] = {10, 100, txLoadImage("Pictures/Ягоды/Клубника.bmp"), 50, 50, 100, 100, false, "Ягоды"};
-    menu_pic[7] = {10, 200, txLoadImage("Pictures/Ягоды/Малина.bmp"), 50, 50, 100, 100, false, "Ягоды"};
-    menu_pic[8] = {10, 300, txLoadImage("Pictures/Ягоды/Черника.bmp"), 50, 50, 100, 100, false, "Ягоды"};
+    menu_pic[0] = {10, 100, "Pictures/Фруктовницы/Фруктовница1.bmp", txLoadImage("Pictures/Фруктовницы/Фруктовница1.bmp"), 80, 80, 400, 400, false, "Фруктовницы"};
+    menu_pic[1] = {10, 200, "Pictures/Фруктовницы/Фруктовница2.bmp", txLoadImage("Pictures/Фруктовницы/Фруктовница2.bmp"), 80, 80, 400, 400, false, "Фруктовницы"};
+    menu_pic[2] = {10, 100, "Pictures/Фрукты/Апельсин.bmp", txLoadImage("Pictures/Фрукты/Апельсин.bmp"), 50, 50, 100, 100, false, "Фрукты"};
+    menu_pic[3] = {10, 200, "Pictures/Фрукты/Лимон.bmp", txLoadImage("Pictures/Фрукты/Лимон.bmp"), 50, 50, 100, 100, false, "Фрукты"};
+    menu_pic[4] = {10, 100, "Pictures/Овощи/Огурец.bmp", txLoadImage("Pictures/Овощи/Огурец.bmp"), 50, 50, 100, 100, false, "Овощи"};
+    menu_pic[5] = {10, 200, "Pictures/Овощи/Помидор.bmp", txLoadImage("Pictures/Овощи/Помидор.bmp"), 50, 50, 100, 100, false, "Овощи"};
+    menu_pic[6] = {10, 100, "Pictures/Ягоды/Клубника.bmp", txLoadImage("Pictures/Ягоды/Клубника.bmp"), 50, 50, 100, 100, false, "Ягоды"};
+    menu_pic[7] = {10, 200, "Pictures/Ягоды/Малина.bmp", txLoadImage("Pictures/Ягоды/Малина.bmp"), 50, 50, 100, 100, false, "Ягоды"};
+    menu_pic[8] = {10, 300, "Pictures/Ягоды/Черника.bmp", txLoadImage("Pictures/Ягоды/Черника.bmp"), 50, 50, 100, 100, false, "Ягоды"};
+    menu_pic[9] = {10, 100, "Pictures/Грибы/Грибы1.bmp", txLoadImage("Pictures/Грибы/Грибы1.bmp"), 50, 50, 100, 100, false, "Грибы"};
+    menu_pic[10] = {10, 200, "Pictures/Грибы/Грибы2.bmp", txLoadImage("Pictures/Грибы/Грибы2.bmp"), 50, 50, 100, 100, false, "Грибы"};
+    menu_pic[11] = {10, 300, "Pictures/Грибы/Грибы3.bmp", txLoadImage("Pictures/Грибы/Грибы3.bmp"), 50, 50, 100, 100, false, "Грибы"};
+    menu_pic[12] = {10, 100, "Pictures/Цветы/Цветы1.bmp", txLoadImage("Pictures/Цветы/Цветы1.bmp"), 50, 50, 100, 100, false, "Цветы"};
+    menu_pic[13] = {10, 200, "Pictures/Цветы/Цветы2.bmp", txLoadImage("Pictures/Цветы/Цветы2.bmp"), 50, 50, 100, 100, false, "Цветы"};
+    menu_pic[14] = {10, 100, "Pictures/Вазы/Ваза1.bmp", txLoadImage("Pictures/Вазы/Ваза1.bmp"), 80, 80, 400, 400, false, "Вазы"};
+    menu_pic[15] = {10, 200, "Pictures/Вазы/Ваза2.bmp", txLoadImage("Pictures/Вазы/Ваза2.bmp"), 80, 80, 400, 400, false, "Вазы"};
 
     //создание массива картинок на рабочей области для проекта с заменой центральных картиной в рабочей области
     /*
@@ -194,7 +213,8 @@ txTextCursor (false);
 
                 centr_pic[nCentralPic] =    {   350,
                                                 150,
-                                                menu_pic[npic].name,
+                                                menu_pic[npic].adress,
+                                                menu_pic[npic].image,
                                                 menu_pic[npic].w,
                                                 menu_pic[npic].h,
                                                 menu_pic[npic].w,
@@ -289,6 +309,51 @@ txTextCursor (false);
             mouse_down = true;
         }
 
+        //Сохранение композиции в файл
+        if(btn[btn_save].click())
+        {
+            ofstream fileout;               // поток для записи
+            fileout.open("result.txt");      // открываем файл для записи
+            if (fileout.is_open())
+            {
+                for(int i=0; i<nCentralPic; i++)
+                {
+                    fileout << centr_pic[i].x << endl;
+                    fileout << centr_pic[i].y << endl;
+                    fileout << centr_pic[i].adress << endl;
+                    fileout << centr_pic[i].w_scr << endl;
+                    fileout << centr_pic[i].h_scr << endl;
+                }
+            }
+            fileout.close();
+        }
+        
+        //Загрузка композиции из файла
+        if(btn[btn_load].click())
+        {
+            char buff[50];
+            ifstream filein("result.txt");      // открываем файл для записи
+            while(filein.good())
+            {
+                filein.getline(buff, 50);
+                int x = atoi(buff);
+                filein.getline(buff, 50);
+                int y = atoi(buff);
+                filein.getline(buff, 50);
+                string adress = buff;
+                filein.getline(buff, 50);
+                int w_scr = atoi(buff);
+                filein.getline(buff, 50);
+                int h_scr = atoi(buff);
+                
+                
+                
+            }
+            filein.close();
+        
+        }
+
+
         txEnd();
         txSleep(10);
 
@@ -296,11 +361,11 @@ txTextCursor (false);
 
     for(int i=0; i<count_pic; i++)
     {
-        txDeleteDC(menu_pic[i].name);
+        txDeleteDC(menu_pic[i].image);
     }
     for(int i=0; i<nCentralPic; i++)
     {
-        txDeleteDC(centr_pic[i].name);
+        txDeleteDC(centr_pic[i].image);
     }
 
 txDisableAutoPause();
