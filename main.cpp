@@ -331,6 +331,11 @@ txTextCursor (false);
         //Загрузка композиции из файла
         if(btn[btn_load].click())
         {
+            while(txMouseButtons() == 1)
+            {
+                txSleep(10);
+            }
+
             char buff[50];
             ifstream filein("result.txt");      // открываем файл для записи
             while(filein.good())
@@ -346,6 +351,24 @@ txTextCursor (false);
                 filein.getline(buff, 50);
                 int h_scr = atoi(buff);
 
+                for(int i=0; i<count_pic; i++)
+                {
+                    if(menu_pic[i].adress == adress)
+                    {
+                        centr_pic[nCentralPic] =    {   x,
+                                                        y,
+                                                        adress,
+                                                        menu_pic[i].image,
+                                                        w_scr,
+                                                        h_scr,
+                                                        menu_pic[i].w,
+                                                        menu_pic[i].h,
+                                                        true,
+                                                        menu_pic[i].category
+                                                    };
+                        nCentralPic ++;
+                    }
+                }
 
 
             }
