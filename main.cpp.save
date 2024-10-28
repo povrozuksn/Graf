@@ -70,6 +70,34 @@ void drawWorkSpace()
     txRectangle (300, 100, 1290, 690);
 }
 
+string DialogFile()
+{
+    string filename;
+    
+    OPENFILENAME ofn = {0}; 
+    TCHAR szFile[260]={0};
+    // Initialize remaining fields of OPENFILENAME structure
+    ZeroMemory(&ofn, sizeof(ofn));
+    ofn.lStructSize = sizeof(ofn); 
+    ofn.hwndOwner = txWindow(); 
+    ofn.lpstrFile = szFile; 
+    ofn.nMaxFile = sizeof(szFile); 
+    ofn.lpstrFilter = ("Text\0*.TXT\0"); 
+    ofn.nFilterIndex = 1; 
+    ofn.lpstrFileTitle = NULL; 
+    ofn.nMaxFileTitle = 0; 
+    ofn.lpstrInitialDir = NULL;
+    ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+
+    if(GetOpenFileName(&ofn) == TRUE)
+    { 
+        filename = 
+
+    }
+
+    return filename;
+}
+
 int main()
 {
 txCreateWindow (1300, 700);
@@ -83,7 +111,7 @@ txTextCursor (false);
     int btn_load = count_btn-1;
     //количество картинок меню
     int count_pic = 16;
-    //количествл центральных картинок в рабочей области
+    //количество центральных картинок в рабочей области
     int nCentralPic = 0;
 
     char str[20];
@@ -312,8 +340,10 @@ txTextCursor (false);
         //—охранение композиции в файл
         if(btn[btn_save].click())
         {
+            string filename =  DialogFile();
+        
             ofstream fileout;               // поток дл€ записи
-            fileout.open("result.txt");      // открываем файл дл€ записи
+            fileout.open(filename);      // открываем файл дл€ записи
             if (fileout.is_open())
             {
                 for(int i=0; i<nCentralPic; i++)
@@ -355,7 +385,6 @@ txTextCursor (false);
                 {
                     if(menu_pic[i].adress == adress)
                     {
-                        /*
                         centr_pic[nCentralPic] =    {   x,
                                                         y,
                                                         adress,
@@ -368,13 +397,6 @@ txTextCursor (false);
                                                         menu_pic[i].category
                                                     };
                         nCentralPic ++;
-                        */
-                        centr_pic[i].x = x;
-                        centr_pic[i].y = y;
-                        centr_pic[i].w_scr = w_scr;
-                        centr_pic[i].h_scr = h_scr;
-                        centr_pic[i].visible = true;
-                        
                     }
                 }
 

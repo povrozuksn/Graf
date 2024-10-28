@@ -70,6 +70,45 @@ void drawWorkSpace()
     txRectangle (300, 100, 1290, 690);
 }
 
+string DialogFile(bool isSave)
+{
+    string filename = "";
+
+    OPENFILENAME ofn = {0};
+    TCHAR szFile[260]={0};
+    // Initialize remaining fields of OPENFILENAME structure
+    ZeroMemory(&ofn, sizeof(ofn));
+    ofn.lStructSize = sizeof(ofn);
+    ofn.hwndOwner = txWindow();
+    ofn.lpstrFile = szFile;
+    ofn.nMaxFile = sizeof(szFile);
+    ofn.lpstrFilter = ("Text\0*.TXT\0");
+    ofn.nFilterIndex = 1;
+    ofn.lpstrFileTitle = NULL;
+    ofn.nMaxFileTitle = 0;
+    ofn.lpstrInitialDir = NULL;
+    ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+
+    if(isSave)
+    {
+        if(GetSaveFileName(&ofn) == TRUE)
+        {
+            filename = ofn.lpstrFile;
+            filename = filename + ".txt";
+        }
+    }
+    else
+    {
+        if(GetOpenFileName(&ofn) == TRUE)
+        {
+            filename = ofn.lpstrFile;
+        }
+    }
+
+
+    return filename;
+}
+
 int main()
 {
 txCreateWindow (1300, 700);
@@ -83,7 +122,7 @@ txTextCursor (false);
     int btn_load = count_btn-1;
     //количество картинок меню
     int count_pic = 16;
-    //количествл центральных картинок в рабочей области
+    //количество центральных картинок в рабочей области
     int nCentralPic = 0;
 
     char str[20];
@@ -236,12 +275,12 @@ txTextCursor (false);
                 mouse_down = false;
             }
         }
-        /*
+
         sprintf(str, "Кол.цент.картинок = %d", nCentralPic);
         txTextOut(10, 600, str);
         sprintf(str, "Выбор = %d", vybor);
         txTextOut(10, 650, str);
-        */
+
         //Передвижение объекта мышкой
         if(vybor>=0)
         {
@@ -312,8 +351,10 @@ txTextCursor (false);
         //Сохранение композиции в файл
         if(btn[btn_save].click())
         {
+            string filename =  DialogFile(true);
+
             ofstream fileout;               // поток для записи
-            fileout.open("result.txt");      // открываем файл для записи
+            fileout.open(filename);      // открываем файл для записи
             if (fileout.is_open())
             {
                 for(int i=0; i<nCentralPic; i++)
@@ -331,13 +372,24 @@ txTextCursor (false);
         //Загрузка композиции из файла
         if(btn[btn_load].click())
         {
+
+            string filename =  DialogFile(false);
+
             while(txMouseButtons() == 1)
             {
                 txSleep(10);
             }
 
+            for(int i=nCentralPic; i>0; i--)
+            {
+                centr_pic[nCentralPic] = centr_pic[nCentralPic-1];
+                nCentralPic--;
+                vybor = -1;
+                mouse_down = true;
+            }
+
             char buff[50];
-            ifstream filein("result.txt");      // открываем файл для записи
+            ifstream filein(filename);      // открываем файл для записи
             while(filein.good())
             {
                 filein.getline(buff, 50);
