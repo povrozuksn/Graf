@@ -115,11 +115,13 @@ txCreateWindow (1300, 700);
 txTextCursor (false);
 
     //количество кнопок
-    int count_btn = 9;
+    int count_btn = 10;
     //кнопка сохранения
-    int btn_save = count_btn-2;
+    int btn_save = count_btn-3;
     //кнопка загрузки
-    int btn_load = count_btn-1;
+    int btn_load = count_btn-2;
+    //кнопка справки
+    int btn_help = count_btn-1;
     //количество картинок меню
     int count_pic = 16;
     //количество центральных картинок в рабочей области
@@ -141,6 +143,7 @@ txTextCursor (false);
     btn[6] = {1120, 10, 150, 30, "Вазы", TX_YELLOW, "Вазы"};
     btn[7] = {300, 55, 150, 30, "Сохранить", TX_LIGHTGREEN, ""};
     btn[8] = {470, 55, 150, 30, "Загрузить", TX_LIGHTGREEN, ""};
+    btn[9] = {1120, 55, 150, 30, "Справка", TX_LIGHTGREEN, ""};
 
     //создание массива картинок меню
     Picture menu_pic[count_pic];
@@ -426,6 +429,11 @@ txTextCursor (false);
             }
             filein.close();
 
+        }
+
+        if(btn[btn_help].click())
+        {
+            txCircle(500, 500, 50);
         }
 
 
