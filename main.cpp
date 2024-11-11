@@ -45,8 +45,8 @@ struct Picture
     int h_scr;
     int w;
     int h;
-    bool visible;
     string category;
+    bool visible;
 
     void draw()
     {
@@ -152,36 +152,32 @@ txTextCursor (false);
 
     //создание массива картинок меню
     Picture menu_pic[count_pic];
-    menu_pic[0] = {10, 100, "Pictures/Фруктовницы/Фруктовница1.bmp", txLoadImage("Pictures/Фруктовницы/Фруктовница1.bmp"), 80, 80, 400, 400, false, "Фруктовницы"};
-    menu_pic[1] = {10, 200, "Pictures/Фруктовницы/Фруктовница2.bmp", txLoadImage("Pictures/Фруктовницы/Фруктовница2.bmp"), 80, 80, 400, 400, false, "Фруктовницы"};
-    menu_pic[2] = {10, 100, "Pictures/Фрукты/Апельсин.bmp", txLoadImage("Pictures/Фрукты/Апельсин.bmp"), 50, 50, 100, 100, false, "Фрукты"};
-    menu_pic[3] = {10, 200, "Pictures/Фрукты/Лимон.bmp", txLoadImage("Pictures/Фрукты/Лимон.bmp"), 50, 50, 100, 100, false, "Фрукты"};
-    menu_pic[4] = {10, 100, "Pictures/Овощи/Огурец.bmp", txLoadImage("Pictures/Овощи/Огурец.bmp"), 50, 50, 100, 100, false, "Овощи"};
-    menu_pic[5] = {10, 200, "Pictures/Овощи/Помидор.bmp", txLoadImage("Pictures/Овощи/Помидор.bmp"), 50, 50, 100, 100, false, "Овощи"};
-    menu_pic[6] = {10, 100, "Pictures/Ягоды/Клубника.bmp", txLoadImage("Pictures/Ягоды/Клубника.bmp"), 50, 50, 100, 100, false, "Ягоды"};
-    menu_pic[7] = {10, 200, "Pictures/Ягоды/Малина.bmp", txLoadImage("Pictures/Ягоды/Малина.bmp"), 50, 50, 100, 100, false, "Ягоды"};
-    menu_pic[8] = {10, 300, "Pictures/Ягоды/Черника.bmp", txLoadImage("Pictures/Ягоды/Черника.bmp"), 50, 50, 100, 100, false, "Ягоды"};
-    menu_pic[9] = {10, 100, "Pictures/Грибы/Грибы1.bmp", txLoadImage("Pictures/Грибы/Грибы1.bmp"), 50, 50, 100, 100, false, "Грибы"};
-    menu_pic[10] = {10, 200, "Pictures/Грибы/Грибы2.bmp", txLoadImage("Pictures/Грибы/Грибы2.bmp"), 50, 50, 100, 100, false, "Грибы"};
-    menu_pic[11] = {10, 300, "Pictures/Грибы/Грибы3.bmp", txLoadImage("Pictures/Грибы/Грибы3.bmp"), 50, 50, 100, 100, false, "Грибы"};
-    menu_pic[12] = {10, 100, "Pictures/Цветы/Цветы1.bmp", txLoadImage("Pictures/Цветы/Цветы1.bmp"), 50, 50, 100, 100, false, "Цветы"};
-    menu_pic[13] = {10, 200, "Pictures/Цветы/Цветы2.bmp", txLoadImage("Pictures/Цветы/Цветы2.bmp"), 50, 50, 100, 100, false, "Цветы"};
-    menu_pic[14] = {10, 100, "Pictures/Вазы/Ваза1.bmp", txLoadImage("Pictures/Вазы/Ваза1.bmp"), 80, 80, 400, 400, false, "Вазы"};
-    menu_pic[15] = {10, 200, "Pictures/Вазы/Ваза2.bmp", txLoadImage("Pictures/Вазы/Ваза2.bmp"), 80, 80, 400, 400, false, "Вазы"};
+    menu_pic[0] = {10, 100, "Pictures/Фруктовницы/Фруктовница1.bmp", txLoadImage("Pictures/Фруктовницы/Фруктовница1.bmp"), 80, 80, 400, 400, "Фруктовницы"};
+    menu_pic[1] = {10, 200, "Pictures/Фруктовницы/Фруктовница2.bmp", txLoadImage("Pictures/Фруктовницы/Фруктовница2.bmp"), 80, 80, 400, 400, "Фруктовницы"};
+    menu_pic[2] = {10, 100, "Pictures/Фрукты/Апельсин.bmp", txLoadImage("Pictures/Фрукты/Апельсин.bmp"), 50, 50, 100, 100, "Фрукты"};
+    menu_pic[3] = {10, 200, "Pictures/Фрукты/Лимон.bmp", txLoadImage("Pictures/Фрукты/Лимон.bmp"), 50, 50, 100, 100, "Фрукты"};
+    menu_pic[4] = {10, 100, "Pictures/Овощи/Огурец.bmp", txLoadImage("Pictures/Овощи/Огурец.bmp"), 50, 50, 100, 100, "Овощи"};
+    menu_pic[5] = {10, 200, "Pictures/Овощи/Помидор.bmp", txLoadImage("Pictures/Овощи/Помидор.bmp"), 50, 50, 100, 100, "Овощи"};
+    menu_pic[6] = {10, 100, "Pictures/Ягоды/Клубника.bmp", txLoadImage("Pictures/Ягоды/Клубника.bmp"), 50, 50, 100, 100, "Ягоды"};
+    menu_pic[7] = {10, 200, "Pictures/Ягоды/Малина.bmp", txLoadImage("Pictures/Ягоды/Малина.bmp"), 50, 50, 100, 100, "Ягоды"};
+    menu_pic[8] = {10, 300, "Pictures/Ягоды/Черника.bmp", txLoadImage("Pictures/Ягоды/Черника.bmp"), 50, 50, 100, 100, "Ягоды"};
+    menu_pic[9] = {10, 100, "Pictures/Грибы/Грибы1.bmp", txLoadImage("Pictures/Грибы/Грибы1.bmp"), 50, 50, 100, 100, "Грибы"};
+    menu_pic[10] = {10, 200, "Pictures/Грибы/Грибы2.bmp", txLoadImage("Pictures/Грибы/Грибы2.bmp"), 50, 50, 100, 100, "Грибы"};
+    menu_pic[11] = {10, 300, "Pictures/Грибы/Грибы3.bmp", txLoadImage("Pictures/Грибы/Грибы3.bmp"), 50, 50, 100, 100, "Грибы"};
+    menu_pic[12] = {10, 100, "Pictures/Цветы/Цветы1.bmp", txLoadImage("Pictures/Цветы/Цветы1.bmp"), 50, 50, 100, 100, "Цветы"};
+    menu_pic[13] = {10, 200, "Pictures/Цветы/Цветы2.bmp", txLoadImage("Pictures/Цветы/Цветы2.bmp"), 50, 50, 100, 100, "Цветы"};
+    menu_pic[14] = {10, 100, "Pictures/Вазы/Ваза1.bmp", txLoadImage("Pictures/Вазы/Ваза1.bmp"), 80, 80, 400, 400, "Вазы"};
+    menu_pic[15] = {10, 200, "Pictures/Вазы/Ваза2.bmp", txLoadImage("Pictures/Вазы/Ваза2.bmp"), 80, 80, 400, 400, "Вазы"};
 
-    //создание массива картинок на рабочей области для проекта с заменой центральных картиной в рабочей области
-    /*
-    Picture centr_pic[count_pic];
-    centr_pic[0] = {350, 150, txLoadImage("Pictures/Ваза/Ваза1.bmp"), 400, 400, 400, 400, false, "Вазы"};
-    centr_pic[1] = {350, 150, txLoadImage("Pictures/Ваза/Ваза2.bmp"), 400, 400, 400, 400, false, "Вазы"};
-    centr_pic[2] = {350, 150, txLoadImage("Pictures/Фрукты/Апельсин.bmp"), 100, 100, 100, 100, false, "Фрукты"};
-    centr_pic[3] = {350, 150, txLoadImage("Pictures/Фрукты/Лимон.bmp"), 100, 100, 100, 100, false, "Фрукты"};
-    centr_pic[4] = {350, 150, txLoadImage("Pictures/Овощи/Огурец.bmp"), 100, 100, 100, 100, false, "Овощи"};
-    centr_pic[5] = {350, 150, txLoadImage("Pictures/Овощи/Помидор.bmp"), 100, 100, 100, 100, false, "Овощи"};
-    centr_pic[6] = {350, 150, txLoadImage("Pictures/Ягоды/Клубника.bmp"), 100, 100, 100, 100, false, "Ягоды"};
-    centr_pic[7] = {350, 150, txLoadImage("Pictures/Ягоды/Малина.bmp"), 100, 100, 100, 100, false, "Ягоды"};
-    centr_pic[8] = {350, 150, txLoadImage("Pictures/Ягоды/Черника.bmp"), 100, 100, 100, 100, false, "Ягоды"};
-    */
+
+    for (int i=0; i<count_btn; i++)
+    {
+        menu_pic[i].visible = false;
+    }
+
+
+
+
 
     //создание массива картинок на рабочей области для проекта без замены центральных картиной в рабочей области
     Picture centr_pic[100];
@@ -230,27 +226,7 @@ txTextCursor (false);
                 }
             }
 
-
             //условие видимости картинок в центре в зависимости от нажатой картинки меню
-
-            //Для замены центральный картинок на рабочей области
-    /*
-            for(int npic=0; npic<count_pic; npic++)
-            {
-                if(menu_pic[npic].click() && menu_pic[npic].visible)
-                {
-                    for(int npic1=0; npic1<count_pic; npic1++)
-                    {
-                        if(centr_pic[npic1].category==centr_pic[npic].category)
-                        {
-                            centr_pic[npic1].visible = false;
-                        }
-                    }
-                    centr_pic[npic].visible = !centr_pic[npic].visible;
-                }
-            }
-     */
-
             //Без замены центральный картинок на рабочей области
             for(int npic=0; npic<count_pic; npic++)
             {
@@ -269,8 +245,8 @@ txTextCursor (false);
                                                     menu_pic[npic].h,
                                                     menu_pic[npic].w,
                                                     menu_pic[npic].h,
-                                                    menu_pic[npic].visible,
-                                                    menu_pic[npic].category
+                                                    menu_pic[npic].category,
+                                                    menu_pic[npic].visible
                                                 };
 
                   nCentralPic ++;
@@ -286,11 +262,12 @@ txTextCursor (false);
                     mouse_down = false;
                 }
             }
-
+/*
             sprintf(str, "Кол.цент.картинок = %d", nCentralPic);
             txTextOut(10, 600, str);
             sprintf(str, "Выбор = %d", vybor);
             txTextOut(10, 650, str);
+*/
 
             //Передвижение объекта мышкой
             if(vybor>=0)
@@ -426,8 +403,8 @@ txTextCursor (false);
                                                             h_scr,
                                                             menu_pic[i].w,
                                                             menu_pic[i].h,
-                                                            true,
-                                                            menu_pic[i].category
+                                                            menu_pic[i].category,
+                                                            true
                                                         };
                             nCentralPic ++;
                         }
