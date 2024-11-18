@@ -1,5 +1,6 @@
 #include "TXLib.h"
 #include <fstream>
+#include <dirent.h>
 
 using namespace std;
 
@@ -109,6 +110,48 @@ string DialogFile(bool isSave)
     return filename;
 }
 
+int get_w(string adress)
+{
+    FILE *f1 = fopen(adress.c_str(), "rb");
+    unsigned char header[54];
+    fread(header, sizeof(unsigned char), 54, f1);
+    int w = *(int *)&header[18];
+    return w;
+}
+
+int get_h(string adress)
+{
+    FILE *f1 = fopen(adress.c_str(), "rb");
+    unsigned char header[54];
+    fread(header, sizeof(unsigned char), 54, f1);
+    int h = *(int *)&header[22];
+    return h;
+}
+
+int ReadFromDir(string adressDir, Picture menu_pic[], int countFiles)
+{
+    DIR *dir;
+    struct dirent *ent;
+    int x = 10;
+    int y = 100;
+    if ((dir = opendir(adressDir.c_str())) != NULL)
+    {
+        if((string)ent->d_name != "." && (string)ent->d_name != "..")
+        {
+            while ((ent = readdir(dir)) != NULL)
+            {
+                menu_pic[countFiles].x = x;
+                menu_pic[countFiles].y = y;
+                menu_pic[countFiles].adress = adressDir + (string)ent->d_name;
+                countFiles++;
+                y+=100;
+            }
+            closedir(dir);
+        }
+    }
+    return countFiles;
+}
+
 int main()
 {
 txCreateWindow (1300, 700);
@@ -125,7 +168,7 @@ txTextCursor (false);
     //кнопка выхода
     int btn_exit = count_btn-1;
     //количество картинок меню
-    int count_pic = 16;
+    int count_pic = 0;
     //количество центральных картинок в рабочей области
     int nCentralPic = 0;
 
@@ -151,32 +194,61 @@ txTextCursor (false);
     btn[10] = {1120, 55, 150, 30, "Выход", TX_LIGHTGREEN, ""};
 
     //создание массива картинок меню
-    Picture menu_pic[count_pic];
-    menu_pic[0] = {10, 100, "Pictures/Фруктовницы/Фруктовница1.bmp", txLoadImage("Pictures/Фруктовницы/Фруктовница1.bmp"), 80, 80, 400, 400};
-    menu_pic[1] = {10, 200, "Pictures/Фруктовницы/Фруктовница2.bmp", txLoadImage("Pictures/Фруктовницы/Фруктовница2.bmp"), 80, 80, 400, 400};
-    menu_pic[2] = {10, 100, "Pictures/Фрукты/Апельсин.bmp", txLoadImage("Pictures/Фрукты/Апельсин.bmp"), 50, 50, 100, 100};
-    menu_pic[3] = {10, 200, "Pictures/Фрукты/Лимон.bmp", txLoadImage("Pictures/Фрукты/Лимон.bmp"), 50, 50, 100, 100};
-    menu_pic[4] = {10, 100, "Pictures/Овощи/Огурец.bmp", txLoadImage("Pictures/Овощи/Огурец.bmp"), 50, 50, 100, 100};
-    menu_pic[5] = {10, 200, "Pictures/Овощи/Помидор.bmp", txLoadImage("Pictures/Овощи/Помидор.bmp"), 50, 50, 100, 100};
-    menu_pic[6] = {10, 100, "Pictures/Ягоды/Клубника.bmp", txLoadImage("Pictures/Ягоды/Клубника.bmp"), 50, 50, 100, 100};
-    menu_pic[7] = {10, 200, "Pictures/Ягоды/Малина.bmp", txLoadImage("Pictures/Ягоды/Малина.bmp"), 50, 50, 100, 100};
-    menu_pic[8] = {10, 300, "Pictures/Ягоды/Черника.bmp", txLoadImage("Pictures/Ягоды/Черника.bmp"), 50, 50, 100, 100};
-    menu_pic[9] = {10, 100, "Pictures/Грибы/Грибы1.bmp", txLoadImage("Pictures/Грибы/Грибы1.bmp"), 50, 50, 100, 100};
-    menu_pic[10] = {10, 200, "Pictures/Грибы/Грибы2.bmp", txLoadImage("Pictures/Грибы/Грибы2.bmp"), 50, 50, 100, 100};
-    menu_pic[11] = {10, 300, "Pictures/Грибы/Грибы3.bmp", txLoadImage("Pictures/Грибы/Грибы3.bmp"), 50, 50, 100, 100};
-    menu_pic[12] = {10, 100, "Pictures/Цветы/Цветы1.bmp", txLoadImage("Pictures/Цветы/Цветы1.bmp"), 50, 50, 100, 100};
-    menu_pic[13] = {10, 200, "Pictures/Цветы/Цветы2.bmp", txLoadImage("Pictures/Цветы/Цветы2.bmp"), 50, 50, 100, 100};
-    menu_pic[14] = {10, 100, "Pictures/Вазы/Ваза1.bmp", txLoadImage("Pictures/Вазы/Ваза1.bmp"), 80, 80, 400, 400};
-    menu_pic[15] = {10, 200, "Pictures/Вазы/Ваза2.bmp", txLoadImage("Pictures/Вазы/Ваза2.bmp"), 80, 80, 400, 400};
+    Picture menu_pic[100];
+
+    count_pic = ReadFromDir("Pictures/Фруктовницы", menu_pic, count_pic);
+    count_pic = ReadFromDir("Pictures/Фрукты", menu_pic, count_pic);
+    count_pic = ReadFromDir("Pictures/Овощи", menu_pic, count_pic);
+    count_pic = ReadFromDir("Pictures/Ягоды", menu_pic, count_pic);
+    count_pic = ReadFromDir("Pictures/Грибы", menu_pic, count_pic);
+    count_pic = ReadFromDir("Pictures/Цветы", menu_pic, count_pic);
+    count_pic = ReadFromDir("Pictures/Вазы", menu_pic, count_pic);
 
 
-    for (int i=0; i<count_btn; i++)
+
+    /*
+    menu_pic[0] = {10, 100, "Pictures/Фруктовницы/Фруктовница1.bmp"};
+    menu_pic[1] = {10, 200, "Pictures/Фруктовницы/Фруктовница2.bmp"};
+    menu_pic[2] = {10, 100, "Pictures/Фрукты/Апельсин.bmp"};
+    menu_pic[3] = {10, 200, "Pictures/Фрукты/Лимон.bmp"};
+    menu_pic[4] = {10, 100, "Pictures/Овощи/Огурец.bmp"};
+    menu_pic[5] = {10, 200, "Pictures/Овощи/Помидор.bmp"};
+    menu_pic[6] = {10, 100, "Pictures/Ягоды/Клубника.bmp"};
+    menu_pic[7] = {10, 200, "Pictures/Ягоды/Малина.bmp"};
+    menu_pic[8] = {10, 300, "Pictures/Ягоды/Черника.bmp"};
+    menu_pic[9] = {10, 100, "Pictures/Грибы/Грибы1.bmp"};
+    menu_pic[10] = {10, 200, "Pictures/Грибы/Грибы2.bmp"};
+    menu_pic[11] = {10, 300, "Pictures/Грибы/Грибы3.bmp"};
+    menu_pic[12] = {10, 100, "Pictures/Цветы/Цветы1.bmp"};
+    menu_pic[13] = {10, 200, "Pictures/Цветы/Цветы2.bmp"};
+    menu_pic[14] = {10, 100, "Pictures/Вазы/Ваза1.bmp"};
+    menu_pic[15] = {10, 200, "Pictures/Вазы/Ваза2.bmp"};
+    */
+
+    for (int i=0; i<count_pic; i++)
     {
         menu_pic[i].visible = false;
 
         int pos1 = menu_pic[i].adress.find("/");
         int pos2 = menu_pic[i].adress.find("/", pos1+1);
         menu_pic[i].category = menu_pic[i].adress.substr(pos1+1, pos2 - (pos1+1));
+
+        menu_pic[i].w = get_w(menu_pic[i].adress);
+        menu_pic[i].h = get_h(menu_pic[i].adress);
+
+        if(menu_pic[i].category == "Фруктовницы" || menu_pic[i].category == "Вазы")
+        {
+            menu_pic[i].w_scr = menu_pic[i].w/5;
+            menu_pic[i].h_scr = menu_pic[i].h/5;
+        }
+        else
+        {
+            menu_pic[i].w_scr = menu_pic[i].w/2;
+            menu_pic[i].h_scr = menu_pic[i].h/2;
+        }
+
+        menu_pic[i].image = txLoadImage(menu_pic[i].adress.c_str());
+
     }
 
 

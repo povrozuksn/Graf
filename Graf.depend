@@ -1,5 +1,6 @@
 # depslib dependency file v1.0
-1731678303 source:c:\users\root\source\repos\graf\main.cpp
+1731940373 source:c:\users\root\source\repos\graf\main.cpp
 	"TXLib.h"
 	<fstream>
+	<dirent.h>
 

@@ -738,3 +738,263 @@ Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
 Directory:	C:\Users\root\source\repos\Graf
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x0047DDE5 в функции length() в файле c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h на строке 45. Попытка прочесть данные по адресу 0x00000019 в модуле C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x4D60 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0047DDE5 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: length() at c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 1 0x00479E26 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe at c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 2 0x0041D742 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: ReadFromDir() at C:/Users/root/source/repos/Graf/main.cpp (139):
+
+    137:     if ((dir = opendir(adressDir.c_str())) != NULL)
+    138:     {
+=>  139:         if((string)ent->d_name != "." && (string)ent->d_name != "..")
+    140:         {
+    141:             while ((ent = readdir(dir)) != NULL)
+
+# 3 0x0041E2A4 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (199):
+
+    197:     Picture menu_pic[100];
+    198: 
+=>  199:     count_pic = ReadFromDir("Pictures/Фруктовницы", menu_pic, count_pic);
+    200:     count_pic = ReadFromDir("Pictures/Фрукты", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Овощи", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 18 2024 18:32:53, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 18 2024 18:32:59
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x0047DDE5 в функции length() в файле c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h на строке 45. Попытка прочесть данные по адресу 0x00000019 в модуле C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x4D60 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0047DDE5 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: length() at c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 1 0x00479E26 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe at c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 2 0x0041D742 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: ReadFromDir() at C:/Users/root/source/repos/Graf/main.cpp (139):
+
+    137:     if ((dir = opendir(adressDir.c_str())) != NULL)
+    138:     {
+=>  139:         if((string)ent->d_name != "." && (string)ent->d_name != "..")
+    140:         {
+    141:             while ((ent = readdir(dir)) != NULL)
+
+# 3 0x0041E2A4 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (199):
+
+    197:     Picture menu_pic[100];
+    198: 
+=>  199:     count_pic = ReadFromDir("Pictures/Фруктовницы", menu_pic, count_pic);
+    200:     count_pic = ReadFromDir("Pictures/Фрукты", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Овощи", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 18 2024 18:32:53, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 18 2024 18:32:59
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x0047DDE5 в функции length() в файле c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h на строке 45. Попытка прочесть данные по адресу 0x00000019 в модуле C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x1BEC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0047DDE5 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: length() at c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 1 0x00479E26 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe at c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 2 0x0041D742 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: ReadFromDir() at C:/Users/root/source/repos/Graf/main.cpp (139):
+
+    137:     if ((dir = opendir(adressDir.c_str())) != NULL)
+    138:     {
+=>  139:         if((string)ent->d_name != "." && (string)ent->d_name != "..")
+    140:         {
+    141:             while ((ent = readdir(dir)) != NULL)
+
+# 3 0x0041E2A4 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (199):
+
+    197:     Picture menu_pic[100];
+    198: 
+=>  199:     count_pic = ReadFromDir("Pictures/Фруктовницы", menu_pic, count_pic);
+    200:     count_pic = ReadFromDir("Pictures/Фрукты", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Овощи", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 18 2024 18:32:53, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 18 2024 18:34:27
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x0047DDE5 в функции length() в файле c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h на строке 45. Попытка прочесть данные по адресу 0x00000019 в модуле C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x1BEC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0047DDE5 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: length() at c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 1 0x00479E26 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe at c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 2 0x0041D742 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: ReadFromDir() at C:/Users/root/source/repos/Graf/main.cpp (139):
+
+    137:     if ((dir = opendir(adressDir.c_str())) != NULL)
+    138:     {
+=>  139:         if((string)ent->d_name != "." && (string)ent->d_name != "..")
+    140:         {
+    141:             while ((ent = readdir(dir)) != NULL)
+
+# 3 0x0041E2A4 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (199):
+
+    197:     Picture menu_pic[100];
+    198: 
+=>  199:     count_pic = ReadFromDir("Pictures/Фруктовницы", menu_pic, count_pic);
+    200:     count_pic = ReadFromDir("Pictures/Фрукты", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Овощи", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 18 2024 18:32:53, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 18 2024 18:34:27
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
