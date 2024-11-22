@@ -998,3 +998,1373 @@ Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
 Directory:	C:\Users\root\source\repos\Graf
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x0047DDE5 в функции length() в файле c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h на строке 45. Попытка прочесть данные по адресу 0x00000019 в модуле C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x4374 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0047DDE5 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: length() at c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 1 0x00479E26 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe at c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 2 0x0041D742 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: ReadFromDir() at C:/Users/root/source/repos/Graf/main.cpp (139):
+
+    137:     if ((dir = opendir(adressDir.c_str())) != NULL)
+    138:     {
+=>  139:         if((string)ent->d_name != "." && (string)ent->d_name != "..")
+    140:         {
+    141:             while ((ent = readdir(dir)) != NULL)
+
+# 3 0x0041E2A4 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (199):
+
+    197:     Picture menu_pic[100];
+    198: 
+=>  199:     count_pic = ReadFromDir("Pictures/Фруктовницы", menu_pic, count_pic);
+    200:     count_pic = ReadFromDir("Pictures/Фрукты", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Овощи", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 18 2024 18:32:53, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:15:40
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x0047DDE5 в функции length() в файле c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h на строке 45. Попытка прочесть данные по адресу 0x00000019 в модуле C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x4374 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0047DDE5 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: length() at c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 1 0x00479E26 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe at c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 2 0x0041D742 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: ReadFromDir() at C:/Users/root/source/repos/Graf/main.cpp (139):
+
+    137:     if ((dir = opendir(adressDir.c_str())) != NULL)
+    138:     {
+=>  139:         if((string)ent->d_name != "." && (string)ent->d_name != "..")
+    140:         {
+    141:             while ((ent = readdir(dir)) != NULL)
+
+# 3 0x0041E2A4 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (199):
+
+    197:     Picture menu_pic[100];
+    198: 
+=>  199:     count_pic = ReadFromDir("Pictures/Фруктовницы", menu_pic, count_pic);
+    200:     count_pic = ReadFromDir("Pictures/Фрукты", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Овощи", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 18 2024 18:32:53, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:15:39
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x0047DDE5 в функции length() в файле c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h на строке 45. Попытка прочесть данные по адресу 0x00000019 в модуле C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x485C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0047DDE5 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: length() at c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 1 0x00479E26 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe at c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 2 0x0041D742 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: ReadFromDir() at C:/Users/root/source/repos/Graf/main.cpp (139):
+
+    137:     if ((dir = opendir(adressDir.c_str())) != NULL)
+    138:     {
+=>  139:         if((string)ent->d_name != "." && (string)ent->d_name != "..")
+    140:         {
+    141:             while ((ent = readdir(dir)) != NULL)
+
+# 3 0x0041E2A4 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (199):
+
+    197:     Picture menu_pic[100];
+    198: 
+=>  199:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    200:     count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:17:07, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:17:13
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x0047DDE5 в функции length() в файле c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h на строке 45. Попытка прочесть данные по адресу 0x00000019 в модуле C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x485C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0047DDE5 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: length() at c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 1 0x00479E26 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe at c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 2 0x0041D742 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: ReadFromDir() at C:/Users/root/source/repos/Graf/main.cpp (139):
+
+    137:     if ((dir = opendir(adressDir.c_str())) != NULL)
+    138:     {
+=>  139:         if((string)ent->d_name != "." && (string)ent->d_name != "..")
+    140:         {
+    141:             while ((ent = readdir(dir)) != NULL)
+
+# 3 0x0041E2A4 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (199):
+
+    197:     Picture menu_pic[100];
+    198: 
+=>  199:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    200:     count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:17:07, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:17:12
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x0047DDE5 в функции length() в файле c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h на строке 45. Попытка прочесть данные по адресу 0x00000019 в модуле C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x12B0 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0047DDE5 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: length() at c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 1 0x00479E26 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe at c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 2 0x0041D742 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: ReadFromDir() at C:/Users/root/source/repos/Graf/main.cpp (139):
+
+    137:     if ((dir = opendir(adressDir.c_str())) != NULL)
+    138:     {
+=>  139:         if((string)ent->d_name != "." && (string)ent->d_name != "..")
+    140:         {
+    141:             while ((ent = readdir(dir)) != NULL)
+
+# 3 0x0041E2A4 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (199):
+
+    197:     Picture menu_pic[100];
+    198: 
+=>  199:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    200:     count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:17:07, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:19:19
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x0047DDE5 в функции length() в файле c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h на строке 45. Попытка прочесть данные по адресу 0x00000019 в модуле C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x12B0 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0047DDE5 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: length() at c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 1 0x00479E26 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe at c:/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 2 0x0041D742 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: ReadFromDir() at C:/Users/root/source/repos/Graf/main.cpp (139):
+
+    137:     if ((dir = opendir(adressDir.c_str())) != NULL)
+    138:     {
+=>  139:         if((string)ent->d_name != "." && (string)ent->d_name != "..")
+    140:         {
+    141:             while ((ent = readdir(dir)) != NULL)
+
+# 3 0x0041E2A4 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (199):
+
+    197:     Picture menu_pic[100];
+    198: 
+=>  199:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    200:     count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:17:07, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:19:20
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x77DBF923 в функции RtlDllShutdownInProgress(). Попытка записать данные по адресу 0x00000014 в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x30CC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x77DBF923 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlDllShutdownInProgress()
+# 1 0x77DA020A in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 2 0x77DA0059 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 3 0x7790EF81 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileW()
+# 4 0x7790D584 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileA()
+# 5 0x76A74B50 in C:\WINDOWS\System32\msvcrt.dll: findnext()
+# 6 0x0043189E in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: readdir()
+
+# 7 0x0041E2A4 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (199):
+
+    197:     Picture menu_pic[100];
+    198: 
+=>  199:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    200:     count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:22:00, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:22:05
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x77DBF923 в функции RtlDllShutdownInProgress(). Попытка записать данные по адресу 0x00000014 в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x30CC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x77DBF923 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlDllShutdownInProgress()
+# 1 0x77DA020A in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 2 0x77DA0059 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 3 0x7790EF81 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileW()
+# 4 0x7790D584 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileA()
+# 5 0x76A74B50 in C:\WINDOWS\System32\msvcrt.dll: findnext()
+# 6 0x0043189E in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: readdir()
+
+# 7 0x0041E2A4 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (199):
+
+    197:     Picture menu_pic[100];
+    198: 
+=>  199:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    200:     count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:22:00, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:22:05
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x77DBF923 в функции RtlDllShutdownInProgress(). Попытка записать данные по адресу 0x00000014 в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x5710 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x77DBF923 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlDllShutdownInProgress()
+# 1 0x77DA020A in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 2 0x77DA0059 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 3 0x7790EF81 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileW()
+# 4 0x7790D584 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileA()
+# 5 0x76A74B50 in C:\WINDOWS\System32\msvcrt.dll: findnext()
+# 6 0x0043189E in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: readdir()
+
+# 7 0x0041E2A4 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (199):
+
+    197:     Picture menu_pic[100];
+    198: 
+=>  199:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    200:     count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:22:00, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:25:26
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x77DBF923 в функции RtlDllShutdownInProgress(). Попытка записать данные по адресу 0x00000014 в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x5710 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x77DBF923 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlDllShutdownInProgress()
+# 1 0x77DA020A in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 2 0x77DA0059 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 3 0x7790EF81 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileW()
+# 4 0x7790D584 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileA()
+# 5 0x76A74B50 in C:\WINDOWS\System32\msvcrt.dll: findnext()
+# 6 0x0043189E in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: readdir()
+
+# 7 0x0041E2A4 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (199):
+
+    197:     Picture menu_pic[100];
+    198: 
+=>  199:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    200:     count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:22:00, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:25:27
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x77DBF923 в функции RtlDllShutdownInProgress(). Попытка записать данные по адресу 0x00000014 в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x3D34 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x77DBF923 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlDllShutdownInProgress()
+# 1 0x77DA020A in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 2 0x77DA0059 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 3 0x7790EF81 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileW()
+# 4 0x7790D584 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileA()
+# 5 0x76A74B50 in C:\WINDOWS\System32\msvcrt.dll: findnext()
+# 6 0x0043189E in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: readdir()
+
+# 7 0x0041E2A4 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (199):
+
+    197:     Picture menu_pic[100];
+    198: 
+=>  199:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    200:     count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:22:00, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:27:09
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x77DBF923 в функции RtlDllShutdownInProgress(). Попытка записать данные по адресу 0x00000014 в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x3D34 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x77DBF923 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlDllShutdownInProgress()
+# 1 0x77DA020A in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 2 0x77DA0059 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 3 0x7790EF81 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileW()
+# 4 0x7790D584 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileA()
+# 5 0x76A74B50 in C:\WINDOWS\System32\msvcrt.dll: findnext()
+# 6 0x0043189E in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: readdir()
+
+# 7 0x0041E2A4 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (199):
+
+    197:     Picture menu_pic[100];
+    198: 
+=>  199:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    200:     count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:22:00, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:27:10
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x77DBF923 в функции RtlDllShutdownInProgress(). Попытка записать данные по адресу 0x00000014 в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x178C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x77DBF923 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlDllShutdownInProgress()
+# 1 0x77DA020A in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 2 0x77DA0059 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 3 0x7790EF81 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileW()
+# 4 0x7790D584 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileA()
+# 5 0x76A74B50 in C:\WINDOWS\System32\msvcrt.dll: findnext()
+# 6 0x0043189E in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: readdir()
+
+# 7 0x0041E2A4 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (199):
+
+    197:     Picture menu_pic[1000];
+    198: 
+=>  199:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    200:     count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:33:07, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:33:12
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x77DBF923 в функции RtlDllShutdownInProgress(). Попытка записать данные по адресу 0x00000014 в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x178C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x77DBF923 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlDllShutdownInProgress()
+# 1 0x77DA020A in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 2 0x77DA0059 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 3 0x7790EF81 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileW()
+# 4 0x7790D584 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileA()
+# 5 0x76A74B50 in C:\WINDOWS\System32\msvcrt.dll: findnext()
+# 6 0x0043189E in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: readdir()
+
+# 7 0x0041E2A4 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (199):
+
+    197:     Picture menu_pic[1000];
+    198: 
+=>  199:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    200:     count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:33:07, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:33:13
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x77DBF923 в функции RtlDllShutdownInProgress(). Попытка записать данные по адресу 0x00000014 в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x1698 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x77DBF923 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlDllShutdownInProgress()
+# 1 0x77DA020A in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 2 0x77DA0059 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 3 0x7790EF81 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileW()
+# 4 0x7790D584 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileA()
+# 5 0x76A74B50 in C:\WINDOWS\System32\msvcrt.dll: findnext()
+# 6 0x004318BE in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: readdir()
+
+# 7 0x0041E2C8 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (201):
+
+    199:     Picture menu_pic[100];
+    200:     cout << count_pic << endl;
+=>  201:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    202:     count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    203:     count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:36:49, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:36:54
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x77DBF923 в функции RtlDllShutdownInProgress(). Попытка записать данные по адресу 0x00000014 в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x1698 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x77DBF923 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlDllShutdownInProgress()
+# 1 0x77DA020A in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 2 0x77DA0059 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 3 0x7790EF81 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileW()
+# 4 0x7790D584 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileA()
+# 5 0x76A74B50 in C:\WINDOWS\System32\msvcrt.dll: findnext()
+# 6 0x004318BE in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: readdir()
+
+# 7 0x0041E2C8 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (201):
+
+    199:     Picture menu_pic[100];
+    200:     cout << count_pic << endl;
+=>  201:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    202:     count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    203:     count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:36:49, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:36:55
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x77DBF923 в функции RtlDllShutdownInProgress(). Попытка записать данные по адресу 0x00000014 в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x3AA4 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x77DBF923 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlDllShutdownInProgress()
+# 1 0x77DA020A in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 2 0x77DA0059 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 3 0x7790EF81 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileW()
+# 4 0x7790D584 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileA()
+# 5 0x76A74B50 in C:\WINDOWS\System32\msvcrt.dll: findnext()
+# 6 0x0043183E in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: readdir()
+
+# 7 0x0041E24D in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (200):
+
+    198:     Picture menu_pic[100];
+    199: 
+=>  200:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    202:     count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:38:44, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:38:49
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x77DBF923 в функции RtlDllShutdownInProgress(). Попытка записать данные по адресу 0x00000014 в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x3AA4 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x77DBF923 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlDllShutdownInProgress()
+# 1 0x77DA020A in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 2 0x77DA0059 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 3 0x7790EF81 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileW()
+# 4 0x7790D584 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileA()
+# 5 0x76A74B50 in C:\WINDOWS\System32\msvcrt.dll: findnext()
+# 6 0x0043183E in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: readdir()
+
+# 7 0x0041E24D in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (200):
+
+    198:     Picture menu_pic[100];
+    199: 
+=>  200:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    202:     count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:38:44, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:38:49
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x77DBF923 в функции RtlDllShutdownInProgress(). Попытка записать данные по адресу 0x00000014 в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x3910 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x77DBF923 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlDllShutdownInProgress()
+# 1 0x77DA020A in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 2 0x77DA0059 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 3 0x7790EF81 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileW()
+# 4 0x7790D584 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileA()
+# 5 0x76A74B50 in C:\WINDOWS\System32\msvcrt.dll: findnext()
+# 6 0x004317AE in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: readdir()
+
+# 7 0x0041E1B3 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (200):
+
+    198:     Picture menu_pic[100];
+    199: 
+=>  200:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    202:     count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:41:48, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:41:53
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x77DBF923 в функции RtlDllShutdownInProgress(). Попытка записать данные по адресу 0x00000014 в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x3910 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x77DBF923 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlDllShutdownInProgress()
+# 1 0x77DA020A in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 2 0x77DA0059 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 3 0x7790EF81 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileW()
+# 4 0x7790D584 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileA()
+# 5 0x76A74B50 in C:\WINDOWS\System32\msvcrt.dll: findnext()
+# 6 0x004317AE in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: readdir()
+
+# 7 0x0041E1B3 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (200):
+
+    198:     Picture menu_pic[100];
+    199: 
+=>  200:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    202:     count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:41:48, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:41:53
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x77DBF923 в функции RtlDllShutdownInProgress(). Попытка записать данные по адресу 0x00000014 в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x3178 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x77DBF923 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlDllShutdownInProgress()
+# 1 0x77DA020A in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 2 0x77DA0059 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 3 0x7790EF81 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileW()
+# 4 0x7790D584 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileA()
+# 5 0x76A74B50 in C:\WINDOWS\System32\msvcrt.dll: findnext()
+# 6 0x0043144E in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: readdir()
+
+# 7 0x0041E1B3 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (200):
+
+    198:     Picture menu_pic[100];
+    199: 
+=>  200:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    201:     //count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    202:     //count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:42:13, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:42:18
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x77DBF923 в функции RtlDllShutdownInProgress(). Попытка записать данные по адресу 0x00000014 в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FA2FC (32-bit), Flags: CMdRe0, Thread: 0x3178 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x77DBF923 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlDllShutdownInProgress()
+# 1 0x77DA020A in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 2 0x77DA0059 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 3 0x7790EF81 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileW()
+# 4 0x7790D584 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileA()
+# 5 0x76A74B50 in C:\WINDOWS\System32\msvcrt.dll: findnext()
+# 6 0x0043144E in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: readdir()
+
+# 7 0x0041E1B3 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (200):
+
+    198:     Picture menu_pic[100];
+    199: 
+=>  200:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    201:     //count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    202:     //count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:42:13, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:42:18
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x77DBF923 в функции RtlDllShutdownInProgress(). Попытка записать данные по адресу 0x00000014 в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FB2FC (32-bit), Flags: CMdRe0, Thread: 0x44B0 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x77DBF923 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlDllShutdownInProgress()
+# 1 0x77DA020A in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 2 0x77DA0059 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 3 0x7790EF81 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileW()
+# 4 0x7790D584 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileA()
+# 5 0x76A74B50 in C:\WINDOWS\System32\msvcrt.dll: findnext()
+# 6 0x004320CE in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: readdir()
+
+# 7 0x0041E1B3 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (200):
+
+    198:     Picture menu_pic[100];
+    199: 
+=>  200:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    201:     //count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    202:     //count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:42:35, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:42:41
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x77DBF923 в функции RtlDllShutdownInProgress(). Попытка записать данные по адресу 0x00000014 в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FB2FC (32-bit), Flags: CMdRe0, Thread: 0x44B0 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x77DBF923 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlDllShutdownInProgress()
+# 1 0x77DA020A in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 2 0x77DA0059 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 3 0x7790EF81 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileW()
+# 4 0x7790D584 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileA()
+# 5 0x76A74B50 in C:\WINDOWS\System32\msvcrt.dll: findnext()
+# 6 0x004320CE in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: readdir()
+
+# 7 0x0041E1B3 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (200):
+
+    198:     Picture menu_pic[100];
+    199: 
+=>  200:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    201:     //count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    202:     //count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:42:35, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:42:41
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x77DBF923 в функции RtlDllShutdownInProgress(). Попытка записать данные по адресу 0x00000014 в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FB2FC (32-bit), Flags: CMdRe0, Thread: 0x3CB0 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x77DBF923 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlDllShutdownInProgress()
+# 1 0x77DA020A in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 2 0x77DA0059 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 3 0x7790EF81 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileW()
+# 4 0x7790D584 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileA()
+# 5 0x76A74B50 in C:\WINDOWS\System32\msvcrt.dll: findnext()
+# 6 0x0043242E in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: readdir()
+
+# 7 0x0041E1B3 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (200):
+
+    198:     Picture menu_pic[100];
+    199: 
+=>  200:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    202:     count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:43:48, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:43:53
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x77DBF923 в функции RtlDllShutdownInProgress(). Попытка записать данные по адресу 0x00000014 в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x004FB2FC (32-bit), Flags: CMdRe0, Thread: 0x3CB0 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x77DBF923 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlDllShutdownInProgress()
+# 1 0x77DA020A in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 2 0x77DA0059 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlEnterCriticalSection()
+# 3 0x7790EF81 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileW()
+# 4 0x7790D584 in C:\WINDOWS\System32\KERNELBASE.dll: FindNextFileA()
+# 5 0x76A74B50 in C:\WINDOWS\System32\msvcrt.dll: findnext()
+# 6 0x0043242E in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: readdir()
+
+# 7 0x0041E1B3 in C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe: main() at C:/Users/root/source/repos/Graf/main.cpp (200):
+
+    198:     Picture menu_pic[100];
+    199: 
+=>  200:     count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    201:     count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    202:     count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Nov 22 2024 17:43:48, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Nov 22 2024 17:43:53
+
+Run file:	C:\Users\root\source\repos\Graf\bin\Debug\Graf.exe
+Directory:	C:\Users\root\source\repos\Graf
+
+--------------------------------------------------

@@ -4,6 +4,7 @@
 
 using namespace std;
 
+
 struct Button
 {
    int x;
@@ -132,22 +133,22 @@ int ReadFromDir(string adressDir, Picture menu_pic[], int countFiles)
 {
     DIR *dir;
     struct dirent *ent;
-    int x = 10; 
+    int x = 10;
     int y = 100;
-    if ((dir = opendir(adressDir.c_str())) != NULL)
+    if ((dir = opendir (adressDir.c_str())) != NULL)
     {
-        if((string)ent->d_name != "." && (string)ent->d_name != "..")
+        while ((ent = readdir (dir)) != NULL)
         {
-            while ((ent = readdir(dir)) != NULL)
+            if((string)ent->d_name != "." && (string)ent->d_name != "..")
             {
-                Picture menu_pic[countFiles].x = x;
-                Picture menu_pic[countFiles].y = y;
-                Picture menu_pic[countFiles].adress = adressDir + (string)ent->d_name;
+                menu_pic[countFiles].x = x;
+                menu_pic[countFiles].y = y;
+                menu_pic[countFiles].adress = adressDir + (string)ent->d_name;
                 countFiles++;
-                y+=100;   
+                y+=100;
             }
-            closedir(dir);
         }
+        closedir(dir);
     }
     return countFiles;
 }
@@ -195,29 +196,14 @@ txTextCursor (false);
 
     //создание массива картинок меню
     Picture menu_pic[100];
-    
-    ReadFromDir("Pictures/Фруктовницы", Picture menu_pic[], int countFiles);
-    
-    
-    
-    /*
-    menu_pic[0] = {10, 100, "Pictures/Фруктовницы/Фруктовница1.bmp"};
-    menu_pic[1] = {10, 200, "Pictures/Фруктовницы/Фруктовница2.bmp"};    
-    menu_pic[2] = {10, 100, "Pictures/Фрукты/Апельсин.bmp"};
-    menu_pic[3] = {10, 200, "Pictures/Фрукты/Лимон.bmp"};
-    menu_pic[4] = {10, 100, "Pictures/Овощи/Огурец.bmp"};
-    menu_pic[5] = {10, 200, "Pictures/Овощи/Помидор.bmp"};
-    menu_pic[6] = {10, 100, "Pictures/Ягоды/Клубника.bmp"};
-    menu_pic[7] = {10, 200, "Pictures/Ягоды/Малина.bmp"};
-    menu_pic[8] = {10, 300, "Pictures/Ягоды/Черника.bmp"};
-    menu_pic[9] = {10, 100, "Pictures/Грибы/Грибы1.bmp"};
-    menu_pic[10] = {10, 200, "Pictures/Грибы/Грибы2.bmp"};
-    menu_pic[11] = {10, 300, "Pictures/Грибы/Грибы3.bmp"};
-    menu_pic[12] = {10, 100, "Pictures/Цветы/Цветы1.bmp"};
-    menu_pic[13] = {10, 200, "Pictures/Цветы/Цветы2.bmp"};
-    menu_pic[14] = {10, 100, "Pictures/Вазы/Ваза1.bmp"};
-    menu_pic[15] = {10, 200, "Pictures/Вазы/Ваза2.bmp"};
-    */
+
+    count_pic = ReadFromDir("Pictures/Фруктовницы/", menu_pic, count_pic);
+    count_pic = ReadFromDir("Pictures/Фрукты/", menu_pic, count_pic);
+    count_pic = ReadFromDir("Pictures/Овощи/", menu_pic, count_pic);
+    count_pic = ReadFromDir("Pictures/Ягоды/", menu_pic, count_pic);
+    count_pic = ReadFromDir("Pictures/Грибы/", menu_pic, count_pic);
+    count_pic = ReadFromDir("Pictures/Цветы/", menu_pic, count_pic);
+    count_pic = ReadFromDir("Pictures/Вазы/", menu_pic, count_pic);
 
     for (int i=0; i<count_pic; i++)
     {
