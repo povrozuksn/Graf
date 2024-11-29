@@ -146,6 +146,11 @@ int ReadFromDir(string adressDir, Picture menu_pic[], int countFiles)
                 menu_pic[countFiles].adress = adressDir + (string)ent->d_name;
                 countFiles++;
                 y+=100;
+                if(y>600)
+                {
+                    x = 110;
+                    y = 100;
+                }
             }
         }
         closedir(dir);
@@ -153,17 +158,126 @@ int ReadFromDir(string adressDir, Picture menu_pic[], int countFiles)
     return countFiles;
 }
 
+inline int GetFilePointer(HANDLE FileHandle)
+{
+    return SetFilePointer(FileHandle, 0, 0, FILE_CURRENT);
+}
+
+bool SaveBMPFile(char *filename, HBITMAP bitmap, HDC bitmapDC, int width, int height)
+{
+    bool Success=0;
+    HBITMAP OffscrBmp=NULL;
+    HDC OffscrDC=NULL;
+    LPBITMAPINFO lpbi=NULL;
+    LPVOID lpvBits=NULL;
+    HANDLE BmpFile=INVALID_HANDLE_VALUE;
+    BITMAPFILEHEADER bmfh;
+    if ((OffscrBmp = CreateCompatibleBitmap(bitmapDC, width, height)) == NULL)
+        return 0;
+    if ((OffscrDC = CreateCompatibleDC(bitmapDC)) == NULL)
+        return 0;
+    HBITMAP OldBmp = (HBITMAP)SelectObject(OffscrDC, OffscrBmp);
+    BitBlt(OffscrDC, 0, 0, width, height, bitmapDC, 0, 0, SRCCOPY);
+    if ((lpbi = (LPBITMAPINFO)(new char[sizeof(BITMAPINFOHEADER) + 256 * sizeof(RGBQUAD)])) == NULL)
+        return 0;
+    ZeroMemory(&lpbi->bmiHeader, sizeof(BITMAPINFOHEADER));
+    lpbi->bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+    SelectObject(OffscrDC, OldBmp);
+    if (!GetDIBits(OffscrDC, OffscrBmp, 0, height, NULL, lpbi, DIB_RGB_COLORS))
+        return 0;
+    if ((lpvBits = new char[lpbi->bmiHeader.biSizeImage]) == NULL)
+        return 0;
+    if (!GetDIBits(OffscrDC, OffscrBmp, 0, height, lpvBits, lpbi, DIB_RGB_COLORS))
+        return 0;
+    if ((BmpFile = CreateFile(filename,
+                        GENERIC_WRITE,
+                        0, NULL,
+                        CREATE_ALWAYS,
+                        FILE_ATTRIBUTE_NORMAL,
+                        NULL)) == INVALID_HANDLE_VALUE)
+        return 0;
+    DWORD Written;
+    bmfh.bfType = 19778;
+    bmfh.bfReserved1 = bmfh.bfReserved2 = 0;
+    if (!WriteFile(BmpFile, &bmfh, sizeof(bmfh), &Written, NULL))
+        return 0;
+    if (Written < sizeof(bmfh))
+        return 0;
+    if (!WriteFile(BmpFile, &lpbi->bmiHeader, sizeof(BITMAPINFOHEADER), &Written, NULL))
+        return 0;
+    if (Written < sizeof(BITMAPINFOHEADER))
+        return 0;
+    int PalEntries;
+    if (lpbi->bmiHeader.biCompression == BI_BITFIELDS)
+        PalEntries = 3;
+    else PalEntries = (lpbi->bmiHeader.biBitCount <= 8) ?
+                      (int)(1 << lpbi->bmiHeader.biBitCount) : 0;
+    if(lpbi->bmiHeader.biClrUsed)
+    PalEntries = lpbi->bmiHeader.biClrUsed;
+    if(PalEntries){
+    if (!WriteFile(BmpFile, &lpbi->bmiColors, PalEntries * sizeof(RGBQUAD), &Written, NULL))
+        return 0;
+        if (Written < PalEntries * sizeof(RGBQUAD))
+            return 0;
+    }
+    bmfh.bfOffBits = GetFilePointer(BmpFile);
+    if (!WriteFile(BmpFile, lpvBits, lpbi->bmiHeader.biSizeImage, &Written, NULL))
+        return 0;
+    if (Written < lpbi->bmiHeader.biSizeImage)
+        return 0;
+    bmfh.bfSize = GetFilePointer(BmpFile);
+    SetFilePointer(BmpFile, 0, 0, FILE_BEGIN);
+    if (!WriteFile(BmpFile, &bmfh, sizeof(bmfh), &Written, NULL))
+        return 0;
+    if (Written < sizeof(bmfh))
+        return 0;
+
+    CloseHandle (BmpFile);
+
+    delete [] (char*)lpvBits;
+    delete [] lpbi;
+
+    DeleteDC (OffscrDC);
+    DeleteObject (OffscrBmp);
+
+
+    return 1;
+}
+
+bool ScreenCapture(int x, int y, int width, int height, char *filename, HWND hwnd)
+{
+    HDC hDC = GetDC(hwnd);
+    HDC hDc = CreateCompatibleDC(hDC);
+
+    HBITMAP hBmp = CreateCompatibleBitmap(hDC, width, height);
+
+    HGDIOBJ old= SelectObject(hDc, hBmp);
+    BitBlt(hDc, 0, 0, width, height, hDC, x, y, SRCCOPY);
+
+    bool ret = SaveBMPFile(filename, hBmp, hDc, width, height);
+
+    SelectObject(hDc, old);
+
+    DeleteObject(hBmp);
+
+    DeleteDC (hDc);
+    ReleaseDC (hwnd, hDC);
+
+    return ret;
+}
+
+
 int main()
 {
 txCreateWindow (1300, 700);
 txTextCursor (false);
 
     //количество кнопок
-    int count_btn = 11;
+    int count_btn = 12;
     //кнопка сохранения
-    int btn_save = count_btn-4;
+    int btn_save = count_btn-5;
     //кнопка загрузки
-    int btn_load = count_btn-3;
+    int btn_load = count_btn-4;
     //кнопка справки
     int btn_help = count_btn-2;
     //кнопка выхода
@@ -191,8 +305,9 @@ txTextCursor (false);
     btn[6] = {1120, 10, 150, 30, "Вазы", TX_YELLOW, "Вазы"};
     btn[7] = {300, 55, 150, 30, "Сохранить", TX_LIGHTGREEN, ""};
     btn[8] = {470, 55, 150, 30, "Загрузить", TX_LIGHTGREEN, ""};
-    btn[9] = {950, 55, 150, 30, "Справка", TX_LIGHTGREEN, ""};
-    btn[10] = {1120, 55, 150, 30, "Выход", TX_LIGHTGREEN, ""};
+    btn[9] = {640, 55, 150, 30, "Снимок экрана", TX_LIGHTGREEN, ""};
+    btn[10] = {950, 55, 150, 30, "Справка", TX_LIGHTGREEN, ""};
+    btn[11] = {1120, 55, 150, 30, "Выход", TX_LIGHTGREEN, ""};
 
     //создание массива картинок меню
     Picture menu_pic[100];
@@ -471,6 +586,13 @@ txTextCursor (false);
                 filein.close();
 
             }
+
+            if(btn[9].click())
+            {
+                ScreenCapture(300, 100, 990, 590, "Композиция.bmp", txWindow());
+                txMessageBox("Успешно сохранено!");
+            }
+
 
             if(btn[btn_help].click())
             {

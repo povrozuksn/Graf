@@ -4,8 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
 <tt>
-Build started on: <u>22-11-2024 at 17:45.11</u><br />
-Build ended on: <u>22-11-2024 at 17:45.16</u><p />
+Build started on: <u>29-11-2024 at 17:34.20</u><br />
+Build ended on: <u>29-11-2024 at 17:34.25</u><p />
 <b>-------------- Build: Debug in Graf (compiler: GNU GCC Compiler)---------------</b><br />
 g++.bat -Wall -fexceptions  -g     -c C:\Users\root\source\repos\Graf\main.cpp -o obj\Debug\main.o<br />
 ------------------------------------------------------------------------------------------------------<br />
@@ -31,6 +31,21 @@ C:\Users\root\source\repos\Graf\main.cpp: In function 'int ReadFromDir(std::stri
 <font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:132:5: warning: no previous declaration for 'int ReadFromDir(std::string, Picture*, int)' [-Wmissing-declarations]</font><br />
  int ReadFromDir(string adressDir, Picture menu_pic[], int countFiles)<br />
      ^<br />
+C:\Users\root\source\repos\Graf\main.cpp: In function 'bool SaveBMPFile(char*, HBITMAP, HDC, int, int)':<br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:166:6: warning: no previous declaration for 'bool SaveBMPFile(char*, HBITMAP, HDC, int, int)' [-Wmissing-declarations]</font><br />
+ bool SaveBMPFile(char *filename, HBITMAP bitmap, HDC bitmapDC, int width, int height)<br />
+      ^<br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:168:10: warning: unused variable 'Success' [-Wunused-variable]</font><br />
+     bool Success=0;<br />
+          ^<br />
+C:\Users\root\source\repos\Graf\main.cpp: At global scope:<br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:166:6: warning: unused parameter 'bitmap' [-Wunused-parameter]</font><br />
+ bool SaveBMPFile(char *filename, HBITMAP bitmap, HDC bitmapDC, int width, int height)<br />
+      ^<br />
+C:\Users\root\source\repos\Graf\main.cpp: In function 'bool ScreenCapture(int, int, int, int, char*, HWND)':<br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:247:6: warning: no previous declaration for 'bool ScreenCapture(int, int, int, int, char*, HWND)' [-Wmissing-declarations]</font><br />
+ bool ScreenCapture(int x, int y, int width, int height, char *filename, HWND hwnd)<br />
+      ^<br />
 C:\Users\root\source\repos\Graf\main.cpp: In constructor 'Button::Button()':<br />
 <font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:8:8: warning: 'Button::x' should be initialized in the member initialization list [-Weffc++]</font><br />
  struct Button<br />
@@ -42,7 +57,7 @@ C:\Users\root\source\repos\Graf\main.cpp: In constructor 'Button::Button()':<br 
 <font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:8:8: warning: 'Button::color' should be initialized in the member initialization list [-Weffc++]</font><br />
 <font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:8:8: warning: 'Button::category' should be initialized in the member initialization list [-Weffc++]</font><br />
 C:\Users\root\source\repos\Graf\main.cpp: In function 'int main()':<br />
-C:\Users\root\source\repos\Graf\main.cpp:184:25: note: synthesized method 'Button::Button()' first required here <br />
+C:\Users\root\source\repos\Graf\main.cpp:298:25: note: synthesized method 'Button::Button()' first required here <br />
      Button btn[count_btn];<br />
                          ^<br />
 C:\Users\root\source\repos\Graf\main.cpp: In constructor 'Picture::Picture()':<br />
@@ -59,36 +74,39 @@ C:\Users\root\source\repos\Graf\main.cpp: In constructor 'Picture::Picture()':<b
 <font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:40:8: warning: 'Picture::category' should be initialized in the member initialization list [-Weffc++]</font><br />
 <font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:40:8: warning: 'Picture::visible' should be initialized in the member initialization list [-Weffc++]</font><br />
 C:\Users\root\source\repos\Graf\main.cpp: In function 'int main()':<br />
-C:\Users\root\source\repos\Graf\main.cpp:198:25: note: synthesized method 'Picture::Picture()' first required here <br />
+C:\Users\root\source\repos\Graf\main.cpp:313:25: note: synthesized method 'Picture::Picture()' first required here <br />
      Picture menu_pic[100];<br />
                          ^<br />
-<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:354:52: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:448:52: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
                     centr_pic[vybor].x = txMouseX() - centr_pic[vybor].w_scr/2;<br />
                                                     ^<br />
-<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:355:52: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:449:52: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
                     centr_pic[vybor].y = txMouseY() - centr_pic[vybor].h_scr/2;<br />
                                                     ^<br />
-<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:387:68: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:481:68: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
                      centr_pic[vybor].w_scr = centr_pic[vybor].w_scr*1.05;<br />
                                                                     ^<br />
-<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:388:68: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:482:68: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
                      centr_pic[vybor].h_scr = centr_pic[vybor].h_scr*1.05;<br />
                                                                     ^<br />
-<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:397:68: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:491:68: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
                      centr_pic[vybor].w_scr = centr_pic[vybor].w_scr*0.95;<br />
                                                                     ^<br />
-<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:398:68: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:492:68: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
                      centr_pic[vybor].h_scr = centr_pic[vybor].h_scr*0.95;<br />
                                                                     ^<br />
-<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:176:10: warning: unused variable 'str' [-Wunused-variable]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:592:79: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]</font><br />
+                 ScreenCapture(300, 100, 990, 590, "Композиция.bmp", txWindow());<br />
+                                                                               ^<br />
+<font color="#0000ff">C:\Users\root\source\repos\Graf\main.cpp:290:10: warning: unused variable 'str' [-Wunused-variable]</font><br />
      char str[20];<br />
           ^<br />
 ------------------------------------------------------------------------------------------------------<br />
 Autosaving to the Git repository in C:/Users/root/source/repos/Graf/.git-auto/... <br />
 g++.exe  -o bin\Debug\Graf.exe obj\Debug\main.o     -mwindows<br />
 Output size is 2,22 MB<br />
-<font color="#0000ff">Process terminated with status 0 (0 minutes, 4 seconds)</font><br />
-<font color="#0000ff">0 errors, 29 warnings (0 minutes, 4 seconds)</font><br />
+<font color="#0000ff">Process terminated with status 0 (0 minutes, 5 seconds)</font><br />
+<font color="#0000ff">0 errors, 34 warnings (0 minutes, 5 seconds)</font><br />
 </tt>
 </body>
 </html>
